@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.ag.common.agent.Agent;
 import org.ag.common.env.Direction;
+import org.ag.common.env.Node;
 
 import net.jcip.annotations.Immutable;
 
@@ -28,7 +29,15 @@ public class WandererTask extends AbstractTask {
 	@Override
 	public void execute(final Agent agent) {
 		final Direction directionToMove = WandererTask.getRandomDirection();
-		agent.getCurrentNode().getNeighbour(directionToMove).addAgent(agent);
+		final Node neighbourNode = agent.getCurrentNode()
+				.getNeighbour(directionToMove); 
+
+		if (neighbourNode != null) {
+			neighbourNode.addAgent(agent);
+
+		} else {
+			this.execute(agent);
+		}
 	}
 
 	/**
