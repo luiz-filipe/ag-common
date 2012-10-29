@@ -26,7 +26,7 @@ public class Simulation {
 	private List<Agent> agents;
 	private List<Future<Void>> tasks;
 
-	public Simulation(int nLines, int nColumns, int poolSize) {
+	public Simulation(final int nLines, final int nColumns, final int poolSize) {
 		this.poolSize = poolSize;
 		this.executor = Executors.newScheduledThreadPool(poolSize);
 
@@ -43,19 +43,19 @@ public class Simulation {
 		return this.agents.size();
 	}
 
-	public void addAgent(Agent agent, int line, int column) {
+	public void addAgent(final Agent agent, final int line, final int column) {
 		this.agents.add(agent);
 		this.environment.placeAgentAt(agent, line, column);
 	}
 
-	public void addAgentMiddleEnvironment(Agent agent) {
+	public void addAgentMiddleEnvironment(final Agent agent) {
 		this.agents.add(agent);
 		this.environment.placeAgentAtTheMiddle(agent);
 	}
 
-	public void run(long time, TimeUnit unit) {
+	public void run(final long time, final TimeUnit unit) {
 		logger.info("Starting simulation...");
-		
+
 		for (Agent agent : agents) {
 			tasks.add(executor.submit(agent));
 		}
@@ -64,17 +64,17 @@ public class Simulation {
 			@Override
 			public Void call() throws Exception {
 				executor.shutdownNow();
-				
+
 				try {
 					if (!executor.awaitTermination(30, TimeUnit.SECONDS)) {
 						logger.error("Could not stop simulation!");
 					}
-				
+
 				} catch (InterruptedException e) {
 					executor.shutdownNow();
 					Thread.currentThread().interrupt();
 				}
-				
+
 				return null;
 			}
 		}, time, unit);

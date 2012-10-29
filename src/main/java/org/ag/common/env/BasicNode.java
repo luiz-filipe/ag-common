@@ -56,7 +56,7 @@ public class BasicNode implements Node {
 	@GuardedBy("this")
 	private List<CommunicationStimulus> communicationStimuli = null;
 
-	public BasicNode(String id) {
+	public BasicNode(final String id) {
 		this.id = id;
 	}
 
@@ -84,7 +84,7 @@ public class BasicNode implements Node {
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
+	public final boolean equals(final Object obj) {
 		if (!(obj instanceof BasicNode)) {
 			return false;
 		}
@@ -100,7 +100,7 @@ public class BasicNode implements Node {
 
 	@Override
 	public void addCommunicationStimulus(
-			CommunicationStimulus communicationStimulus) {
+			final CommunicationStimulus communicationStimulus) {
 		synchronized (this) {
 			if (communicationStimuli == null) {
 				communicationStimuli = Collections
@@ -169,25 +169,25 @@ public class BasicNode implements Node {
 		switch (direction) {
 		case NORTH:
 			return this.north;
-		
+
 		case NORTH_EAST:
 			return this.northEast;
-		
+
 		case EAST:
 			return this.east;
-		
+
 		case SOUTH_EAST:
 			return this.southEast;
-		
+
 		case SOUTH:
 			return this.south;
-		
+
 		case SOUTH_WEST:
 			return this.southWest;
-		
+
 		case WEST:
 			return this.west;
-		
+
 		case NORTH_WEST:
 			return this.northWest;
 		}
@@ -208,31 +208,31 @@ public class BasicNode implements Node {
 		case NORTH:
 			this.north = node;
 			break;
-		
+
 		case NORTH_EAST:
 			this.northEast = node;
 			break;
-			
+
 		case EAST:
 			this.east = node;
 			break;
-		
+
 		case SOUTH_EAST:
 			this.southEast = node;
 			break;
-			
+
 		case SOUTH:
 			this.south = node;
 			break;
-		
+
 		case SOUTH_WEST:
 			this.southWest = node;
 			break;
-			
+
 		case WEST:
 			this.west = node;
 			break;
-			
+
 		case NORTH_WEST:
 			this.northWest = node;
 			break;
@@ -256,7 +256,7 @@ public class BasicNode implements Node {
 			this.northEast = node;
 			node.setNeighbour(Direction.SOUTH_WEST, this);
 			break;
-		
+
 		case EAST:
 			this.east = node;
 			node.setNeighbour(Direction.WEST, this);
@@ -266,7 +266,7 @@ public class BasicNode implements Node {
 			this.southEast = node;
 			node.setNeighbour(Direction.NORTH_WEST, this);
 			break;
-			
+
 		case SOUTH:
 			this.south = node;
 			node.setNeighbour(Direction.NORTH, this);
@@ -276,12 +276,12 @@ public class BasicNode implements Node {
 			this.southWest = node;
 			node.setNeighbour(Direction.NORTH_EAST, this);
 			break;
-			
+
 		case WEST:
 			this.west = node;
 			node.setNeighbour(Direction.EAST, this);
 			break;
-			
+
 		case NORTH_WEST:
 			this.northWest = node;
 			node.setNeighbour(Direction.SOUTH_EAST, this);

@@ -33,7 +33,7 @@ public interface Agent extends Callable<Void> {
 	 * @param node
 	 *            Node a node
 	 */
-	void setCurrentNode(Node node);
+	void setCurrentNode(final Node node);
 
 	/**
 	 * Returns the node the agent is sat on. This must be thread safe
@@ -50,7 +50,7 @@ public interface Agent extends Callable<Void> {
 	 * @param node
 	 *            Node to add to the list of nodes that have been visited.
 	 */
-	void addToVisitedHistory(Node node);
+	void addToVisitedHistory(final Node node);
 
 	/**
 	 * Returns the list of nodes that the agent has visited. Node that this list

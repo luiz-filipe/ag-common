@@ -19,7 +19,7 @@ import net.jcip.annotations.Immutable;
 public abstract class AbstractTask implements Task {
 	protected final String name;
 
-	public AbstractTask(String id) {
+	public AbstractTask(final String id) {
 		this.name = id;
 	}
 
@@ -37,7 +37,7 @@ public abstract class AbstractTask implements Task {
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
+	public final boolean equals(final Object obj) {
 		if (!(obj instanceof AbstractTask)) {
 			return false;
 		}

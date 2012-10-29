@@ -24,7 +24,8 @@ public class EnvironmentFactory {
 	 * @return Node[][] A two dimensional array of interconnected BasicNode
 	 *         objects.
 	 */
-	public static Node[][] createBasicNodeGrid(int nLines, int nColunms) {
+	public static Node[][] createBasicNodeGrid(final int nLines,
+			final int nColunms) {
 		Node[][] nodes = new Node[nLines][nColunms];
 
 		for (int l = 0; l < nLines; l++) {

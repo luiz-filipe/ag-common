@@ -18,7 +18,7 @@ public class BasicCommunicationStimulus implements CommunicationStimulus {
 	private final CommunicationStimulusType communicationStimulusType;
 
 	public BasicCommunicationStimulus(
-			CommunicationStimulusType communicationStimulusType) {
+			final CommunicationStimulusType communicationStimulusType) {
 		this.communicationStimulusType = communicationStimulusType;
 	}
 
@@ -39,7 +39,7 @@ public class BasicCommunicationStimulus implements CommunicationStimulus {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (!(obj instanceof BasicCommunicationStimulus)) {
 			return false;
 		}
@@ -68,7 +68,7 @@ public class BasicCommunicationStimulus implements CommunicationStimulus {
 	 *            Object to test equality
 	 * @return True if other object can equals objects of the class
 	 */
-	public boolean canEqual(Object obj) {
+	public boolean canEqual(final Object obj) {
 		return (obj instanceof BasicCommunicationStimulus);
 	}
 }

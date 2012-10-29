@@ -31,8 +31,8 @@ public abstract class AbstractAgent implements Agent {
 	@GuardedBy("this")
 	protected List<Node> nodesVisited = null;
 
-	public AbstractAgent(String id, AgentType agentType, Node currentNode,
-			boolean recordNodeHistory) {
+	public AbstractAgent(final String id, final AgentType agentType,
+			final Node currentNode, final boolean recordNodeHistory) {
 
 		this.id = id;
 		this.agentType = agentType;
@@ -40,16 +40,16 @@ public abstract class AbstractAgent implements Agent {
 		currentNode.addAgentStartingHere(this);
 	}
 
-	public AbstractAgent(String id, AgentType agentType,
-			boolean recordNodeHistory) {
-		
+	public AbstractAgent(final String id, final AgentType agentType,
+			final boolean recordNodeHistory) {
+
 		this.id = id;
 		this.agentType = agentType;
 		this.recordNodeHistory = recordNodeHistory;
 
 	}
-	
-	public AbstractAgent(String id, AgentType agentType) {
+
+	public AbstractAgent(final String id, final AgentType agentType) {
 		this.id = id;
 		this.agentType = agentType;
 		this.recordNodeHistory = false;
@@ -65,7 +65,7 @@ public abstract class AbstractAgent implements Agent {
 	 *            node is going to be set as current.
 	 */
 	@Override
-	public synchronized void setCurrentNode(Node node) {
+	public synchronized void setCurrentNode(final Node node) {
 		this.currentNode = node;
 	}
 
@@ -85,7 +85,7 @@ public abstract class AbstractAgent implements Agent {
 	}
 
 	@Override
-	public void addToVisitedHistory(Node node) {
+	public void addToVisitedHistory(final Node node) {
 		synchronized (this) {
 			if (nodesVisited == null) {
 				nodesVisited = Collections
@@ -136,7 +136,7 @@ public abstract class AbstractAgent implements Agent {
 	}
 
 	@Override
-	public final boolean equals(Object obj) {
+	public final boolean equals(final Object obj) {
 		if (!(obj instanceof AbstractAgent)) {
 			return false;
 		}
@@ -160,7 +160,7 @@ public abstract class AbstractAgent implements Agent {
 		return true;
 	}
 
-	public boolean canEqual(Object obj) {
+	public boolean canEqual(final Object obj) {
 		return (obj instanceof AbstractAgent);
 	}
 }

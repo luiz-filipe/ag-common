@@ -25,29 +25,30 @@ import net.jcip.annotations.ThreadSafe;
 
 @ThreadSafe
 public abstract class TaskAgent extends AbstractAgent {
-	@GuardedBy("this") private Task currentTask;
+	@GuardedBy("this")
+	private Task currentTask;
 	protected final TaskAgentType agentType;
 
-	public TaskAgent(String id, TaskAgentType agentType, Node currentNode,
-			boolean recordNodeHistory) {
-		
+	public TaskAgent(final String id, final TaskAgentType agentType,
+			final Node currentNode, final boolean recordNodeHistory) {
+
 		super(id, agentType, currentNode, recordNodeHistory);
 		this.agentType = agentType;
 	}
 
-	public TaskAgent(String id, TaskAgentType agentType,
-			boolean recordNodeHistory) {
-		
+	public TaskAgent(final String id, final TaskAgentType agentType,
+			final boolean recordNodeHistory) {
+
 		super(id, agentType, recordNodeHistory);
 		this.agentType = agentType;
 	}
-	
-	public TaskAgent(String id, TaskAgentType agentType) {
+
+	public TaskAgent(final String id, final TaskAgentType agentType) {
 		super(id, agentType);
-		
+
 		this.agentType = agentType;
 	}
-	
+
 	public List<Task> getTaskList() {
 		return agentType.getTasks();
 	}
@@ -56,15 +57,15 @@ public abstract class TaskAgent extends AbstractAgent {
 		return currentTask;
 	}
 
-	public synchronized void setCurrentTask(Task currentTask) {
+	public synchronized void setCurrentTask(final Task currentTask) {
 		this.currentTask = currentTask;
 	}
 
-	public synchronized void setCurrentTask(String taskName) {
+	public synchronized void setCurrentTask(final String taskName) {
 		this.currentTask = this.getTaskByName(taskName);
 	}
 
-	public Task getTaskByName(String name) {
+	public Task getTaskByName(final String name) {
 		for (Task task : agentType.getTasks()) {
 			if (task.getName().equals(name)) {
 				return task;
