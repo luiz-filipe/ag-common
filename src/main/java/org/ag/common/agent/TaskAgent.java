@@ -35,6 +35,19 @@ public abstract class TaskAgent extends AbstractAgent {
 		this.agentType = agentType;
 	}
 
+	public TaskAgent(String id, TaskAgentType agentType,
+			boolean recordNodeHistory) {
+		
+		super(id, agentType, recordNodeHistory);
+		this.agentType = agentType;
+	}
+	
+	public TaskAgent(String id, TaskAgentType agentType) {
+		super(id, agentType);
+		
+		this.agentType = agentType;
+	}
+	
 	public List<Task> getTaskList() {
 		return agentType.getTasks();
 	}

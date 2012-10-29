@@ -3,7 +3,6 @@ package org.ag.common.agent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import org.ag.common.env.Node;
 import org.slf4j.Logger;
@@ -20,15 +19,17 @@ import net.jcip.annotations.ThreadSafe;
  * 
  */
 @ThreadSafe
-public abstract class AbstractAgent implements Agent, Callable<Void> {
+public abstract class AbstractAgent implements Agent {
 	private static final Logger logger = LoggerFactory
 			.getLogger(AbstractAgent.class);
 
 	protected final String id;
 	protected final AgentType agentType;
 	protected final boolean recordNodeHistory;
-	@GuardedBy("this") protected Node currentNode;
-	@GuardedBy("this") protected List<Node> nodesVisited = null;
+	@GuardedBy("this")
+	protected Node currentNode;
+	@GuardedBy("this")
+	protected List<Node> nodesVisited = null;
 
 	public AbstractAgent(String id, AgentType agentType, Node currentNode,
 			boolean recordNodeHistory) {
@@ -37,6 +38,21 @@ public abstract class AbstractAgent implements Agent, Callable<Void> {
 		this.agentType = agentType;
 		this.recordNodeHistory = recordNodeHistory;
 		currentNode.addAgentStartingHere(this);
+	}
+
+	public AbstractAgent(String id, AgentType agentType,
+			boolean recordNodeHistory) {
+		
+		this.id = id;
+		this.agentType = agentType;
+		this.recordNodeHistory = recordNodeHistory;
+
+	}
+	
+	public AbstractAgent(String id, AgentType agentType) {
+		this.id = id;
+		this.agentType = agentType;
+		this.recordNodeHistory = false;
 	}
 
 	/**
@@ -124,7 +140,7 @@ public abstract class AbstractAgent implements Agent, Callable<Void> {
 		if (!(obj instanceof AbstractAgent)) {
 			return false;
 		}
-		
+
 		AbstractAgent other = (AbstractAgent) obj;
 		if (agentType == null) {
 			if (other.agentType != null)
@@ -136,14 +152,14 @@ public abstract class AbstractAgent implements Agent, Callable<Void> {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
+
 		if (!other.canEqual(this)) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	public boolean canEqual(Object obj) {
 		return (obj instanceof AbstractAgent);
 	}

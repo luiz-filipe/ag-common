@@ -1,6 +1,7 @@
 package org.ag.common.agent;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import org.ag.common.env.Node;
 
@@ -10,7 +11,7 @@ import org.ag.common.env.Node;
  * @author Luiz Abrahao <luiz@luizabrahao.com>
  * 
  */
-public interface Agent {
+public interface Agent extends Callable<Void> {
 	/**
 	 * Every agent must have an identifier, and this should be used in the
 	 * hashCode() and equals().
