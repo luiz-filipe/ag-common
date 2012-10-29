@@ -49,19 +49,32 @@ public class BasicNodeTest {
 
 	@Test
 	public void neighboursLinkTest() {
-		final Node l = new BasicNode("left");
-		final Node r = new BasicNode("right");
+		final Node c = new BasicNode("centre");
+		final Node n = new BasicNode("north");
+		final Node ne = new BasicNode("north-east");
+		final Node e = new BasicNode("east");
+		final Node se = new BasicNode("south-east");
+		final Node s = new BasicNode("south");
+		final Node sw = new BasicNode("south-west");
+		final Node w = new BasicNode("west");
+		final Node nw = new BasicNode("north-west");
 		
-		l.setNeighbours(Direction.EAST, r);
+		c.setNeighbours(Direction.NORTH, n);
+		c.setNeighbours(Direction.NORTH_EAST, ne);
+		c.setNeighbours(Direction.EAST, e);
+		c.setNeighbours(Direction.SOUTH_EAST, se);
+		c.setNeighbours(Direction.SOUTH, s);
+		c.setNeighbours(Direction.SOUTH_WEST, sw);
+		c.setNeighbours(Direction.WEST, w);
+		c.setNeighbours(Direction.NORTH_WEST, nw);
 		
-		assertTrue(l.getNeighbour(Direction.NORTH) == null);
-		assertTrue(l.getNeighbour(Direction.EAST).equals(r));
-		assertTrue(l.getNeighbour(Direction.SOUTH) == null);
-		assertTrue(l.getNeighbour(Direction.WEST) == null);
-		
-		assertTrue(r.getNeighbour(Direction.NORTH) == null);
-		assertTrue(r.getNeighbour(Direction.EAST) == null);
-		assertTrue(r.getNeighbour(Direction.SOUTH) == null);
-		assertTrue(r.getNeighbour(Direction.WEST).equals(l));
+		assertTrue(c.getNeighbour(Direction.NORTH).equals(n));
+		assertTrue(c.getNeighbour(Direction.NORTH_EAST).equals(ne));
+		assertTrue(c.getNeighbour(Direction.EAST).equals(e));
+		assertTrue(c.getNeighbour(Direction.SOUTH_EAST).equals(se));
+		assertTrue(c.getNeighbour(Direction.SOUTH).equals(s));
+		assertTrue(c.getNeighbour(Direction.SOUTH_WEST).equals(sw));
+		assertTrue(c.getNeighbour(Direction.WEST).equals(w));
+		assertTrue(c.getNeighbour(Direction.NORTH_WEST).equals(nw));
 	}
 }

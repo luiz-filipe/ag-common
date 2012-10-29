@@ -8,7 +8,8 @@ package org.ag.common.env;
  * 
  */
 public class EnvironmentFactory {
-	private EnvironmentFactory() {}
+	private EnvironmentFactory() {
+	}
 
 	/**
 	 * Initialises an environment based on BasicNode objects. This environment
@@ -36,6 +37,16 @@ public class EnvironmentFactory {
 
 				if (l != 0) {
 					nodes[l][c].setNeighbours(Direction.NORTH, nodes[l - 1][c]);
+				}
+
+				if ((l != 0) && (c != 0)) {
+					nodes[l][c].setNeighbours(Direction.NORTH_WEST,
+							nodes[l - 1][c - 1]);
+				}
+
+				if ((l != 0) && (c != nColunms - 1)) {
+					nodes[l][c].setNeighbours(Direction.NORTH_EAST,
+							nodes[l - 1][c + 1]);
 				}
 			}
 		}

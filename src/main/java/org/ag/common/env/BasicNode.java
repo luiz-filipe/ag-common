@@ -42,9 +42,13 @@ public class BasicNode implements Node {
 	private final String id;
 
 	private Node north = null;
+	private Node northEast = null;
 	private Node east = null;
+	private Node southEast = null;
 	private Node south = null;
+	private Node southWest = null;
 	private Node west = null;
+	private Node northWest = null;
 
 	@GuardedBy("this")
 	private List<Agent> agents = null;
@@ -165,12 +169,27 @@ public class BasicNode implements Node {
 		switch (direction) {
 		case NORTH:
 			return this.north;
+		
+		case NORTH_EAST:
+			return this.northEast;
+		
 		case EAST:
 			return this.east;
+		
+		case SOUTH_EAST:
+			return this.southEast;
+		
 		case SOUTH:
 			return this.south;
+		
+		case SOUTH_WEST:
+			return this.southWest;
+		
 		case WEST:
 			return this.west;
+		
+		case NORTH_WEST:
+			return this.northWest;
 		}
 
 		throw new RuntimeException("Direction '" + direction
@@ -189,14 +208,33 @@ public class BasicNode implements Node {
 		case NORTH:
 			this.north = node;
 			break;
+		
+		case NORTH_EAST:
+			this.northEast = node;
+			break;
+			
 		case EAST:
 			this.east = node;
 			break;
+		
+		case SOUTH_EAST:
+			this.southEast = node;
+			break;
+			
 		case SOUTH:
 			this.south = node;
 			break;
+		
+		case SOUTH_WEST:
+			this.southWest = node;
+			break;
+			
 		case WEST:
 			this.west = node;
+			break;
+			
+		case NORTH_WEST:
+			this.northWest = node;
 			break;
 		}
 	}
@@ -214,19 +252,39 @@ public class BasicNode implements Node {
 			node.setNeighbour(Direction.SOUTH, this);
 			break;
 
+		case NORTH_EAST:
+			this.northEast = node;
+			node.setNeighbour(Direction.SOUTH_WEST, this);
+			break;
+		
 		case EAST:
 			this.east = node;
 			node.setNeighbour(Direction.WEST, this);
 			break;
 
+		case SOUTH_EAST:
+			this.southEast = node;
+			node.setNeighbour(Direction.NORTH_WEST, this);
+			break;
+			
 		case SOUTH:
 			this.south = node;
 			node.setNeighbour(Direction.NORTH, this);
 			break;
 
+		case SOUTH_WEST:
+			this.southWest = node;
+			node.setNeighbour(Direction.NORTH_EAST, this);
+			break;
+			
 		case WEST:
 			this.west = node;
 			node.setNeighbour(Direction.EAST, this);
+			break;
+			
+		case NORTH_WEST:
+			this.northWest = node;
+			node.setNeighbour(Direction.SOUTH_EAST, this);
 			break;
 		}
 	}
