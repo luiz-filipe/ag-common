@@ -5,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.Callable;
 
 import javax.imageio.ImageIO;
 
@@ -20,18 +19,15 @@ import org.slf4j.LoggerFactory;
  * @author luiz@luizabrahao.com
  *
  */
-public class ExploratedEnvironmentRenderer implements Callable<Void> {
+public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	private static final Logger logger = LoggerFactory
 			.getLogger(ExploratedEnvironmentRenderer.class);
 
-	private final Environment environment;
-	private final String path;
 	private final Color colourEnv;
 	private final Color colorVisitedNode;
 
 	public ExploratedEnvironmentRenderer(Environment environment, String path) {
-		this.environment = environment;
-		this.path = path;
+		super(environment, path);
 
 		this.colourEnv = Color.white;
 		this.colorVisitedNode = Color.black;
@@ -39,8 +35,8 @@ public class ExploratedEnvironmentRenderer implements Callable<Void> {
 
 	public ExploratedEnvironmentRenderer(Environment environment, String path,
 			Color colourEnv, Color colorVisitedNode) {
-		this.environment = environment;
-		this.path = path;
+		super(environment, path);
+		
 		this.colourEnv = colourEnv;
 		this.colorVisitedNode = colorVisitedNode;
 	}
