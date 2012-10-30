@@ -14,6 +14,14 @@ public class Environment {
 	private final int nLines;
 	private final int nColumns;
 
+	public int getNumberOfLines() {
+		return nLines;
+	}
+
+	public int getNumberOfColumns() {
+		return nColumns;
+	}
+
 	public Environment(final int nLines, final int nColumns) {
 		this.nLines = nLines;
 		this.nColumns = nColumns;
@@ -50,5 +58,30 @@ public class Environment {
 	
 	public void placeAgentAtTheMiddle(final Agent agent) {
 		env[nLines / 2][nColumns / 2].addAgentStartingHere(agent);
+	}
+	
+	public Node getNodeAt(final int line, final int column) {
+		if ((line < 0) || (column < 0)) {
+			logger.error("Cannot return node. line and column parameters" +
+					"must be greater or equal to 0.");
+
+			return null;
+		}
+
+		if (line > nLines - 1) {
+			logger.error("Cannot return node. The maximum allowed value for" +
+					" line is: {}", nLines - 1);
+			
+			return null;
+		}
+
+		if (column > nColumns - 1) {
+			logger.error("Cannot return node. The maximum allowed value for " +
+					"column is: {}", nColumns - 1);
+			
+			return null;
+		}
+		
+		return env[line][column];
 	}
 }
