@@ -61,7 +61,7 @@ public abstract class AbstractAgent implements Agent {
 	 * Which makes sure both sides of the relationship are defined.
 	 * 
 	 * @see Node
-	 * @param Node
+	 * @param node
 	 *            node is going to be set as current.
 	 */
 	@Override

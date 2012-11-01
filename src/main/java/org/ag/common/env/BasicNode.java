@@ -134,7 +134,7 @@ public class BasicNode implements Node {
 
 		synchronized (agents) {
 			this.agents.add(agent);
-			logger.debug("{}: agent {} moved here.", this.getId(),
+			logger.trace("{}: agent {} moved here.", this.getId(),
 					agent.getId());
 		}
 

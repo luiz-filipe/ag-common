@@ -73,7 +73,7 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 		}
 
 		g2d.dispose();
-
+		
 		try {
 			File file = new File(path);
 

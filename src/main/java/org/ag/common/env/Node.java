@@ -19,7 +19,7 @@ public interface Node {
 	 * Each agent has an unique identifier, this is going to be used during the
 	 * data analysis.
 	 * 
-	 * @return
+	 * @return String unique identifier 
 	 */
 	String getId();
 

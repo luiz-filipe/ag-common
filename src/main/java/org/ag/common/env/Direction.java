@@ -20,11 +20,30 @@ public enum Direction {
 			.values());
 	private static final Random random = new Random();
 
+	/**
+	 * Returns a random direction.
+	 * 
+	 * @return Direction random direction
+	 */
 	public static Direction randomDirection() {
 		return values.get(random.nextInt(values.size()));
 	}
 
-	public Direction getOposit() {
+	/**
+	 * Returns the opposite direction any direction of the enumeration. 
+	 * 
+	 * NORTH -> SOUTH
+	 * NOTH_EAST -> SOUTH_WEST
+	 * EAST -> WEST
+	 * SOUT_EAST -> NORTH_WEST
+	 * SOUTH -> NORTH
+	 * SOUTH_WEST -> NORTH_EAST
+	 * WEST -> EAST
+	 * NORTH_WEST -> SOUTH_EAST
+	 * 
+	 * @return Direction opposite directions
+	 */
+	public Direction getOpposite() {
 		switch (this) {
 		case NORTH:
 			return Direction.SOUTH;
@@ -51,6 +70,7 @@ public enum Direction {
 			return Direction.SOUTH_EAST;
 		}
 
-		throw new RuntimeException("Could not give oposit direction for " + this);
+		throw new RuntimeException("Could not give oposit direction for "
+				+ this);
 	}
 }

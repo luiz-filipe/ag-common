@@ -1,11 +1,21 @@
 package org.ag.common.simulation;
 
+import net.jcip.annotations.NotThreadSafe;
+
 import org.ag.common.agent.Agent;
 import org.ag.common.env.EnvironmentFactory;
 import org.ag.common.env.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * A environment provides encapsulation for a grid of basic nodes and some handy
+ * methods to place agents into this grid.
+ * 
+ * @author Luiz Abrahao <luiz@luizabrahao.com>
+ *
+ */
+@NotThreadSafe
 public class Environment {
 	private static final Logger logger = LoggerFactory
 			.getLogger(Environment.class);

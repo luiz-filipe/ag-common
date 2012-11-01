@@ -9,7 +9,6 @@ import net.jcip.annotations.Immutable;
  * ChemicalCommStimulus class is an example of this case. This is just an
  * abstraction implementation that should be used as base.
  * 
- * @see ChemicalCommStimulus
  * @author Luiz Abrahao <luiz@luizabrahao.com>
  * 
  */
@@ -64,7 +63,7 @@ public class BasicCommunicationStimulus implements CommunicationStimulus {
 	 * 
 	 * See http://www.artima.com/lejava/articles/equality.html
 	 * 
-	 * @param other
+	 * @param obj
 	 *            Object to test equality
 	 * @return True if other object can equals objects of the class
 	 */

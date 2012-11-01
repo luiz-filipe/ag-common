@@ -110,13 +110,13 @@ public class DirectionTest {
 	
 	@Test
 	public void getOpositDirectionTest() {
-		assertTrue(Direction.NORTH.getOposit().equals(Direction.SOUTH));
-		assertTrue(Direction.NORTH_EAST.getOposit().equals(Direction.SOUTH_WEST));
-		assertTrue(Direction.EAST.getOposit().equals(Direction.WEST));
-		assertTrue(Direction.SOUTH_EAST.getOposit().equals(Direction.NORTH_WEST));
-		assertTrue(Direction.SOUTH.getOposit().equals(Direction.NORTH));
-		assertTrue(Direction.SOUTH_WEST.getOposit().equals(Direction.NORTH_EAST));
-		assertTrue(Direction.WEST.getOposit().equals(Direction.EAST));
-		assertTrue(Direction.NORTH_WEST.getOposit().equals(Direction.SOUTH_EAST));
+		assertTrue(Direction.NORTH.getOpposite().equals(Direction.SOUTH));
+		assertTrue(Direction.NORTH_EAST.getOpposite().equals(Direction.SOUTH_WEST));
+		assertTrue(Direction.EAST.getOpposite().equals(Direction.WEST));
+		assertTrue(Direction.SOUTH_EAST.getOpposite().equals(Direction.NORTH_WEST));
+		assertTrue(Direction.SOUTH.getOpposite().equals(Direction.NORTH));
+		assertTrue(Direction.SOUTH_WEST.getOpposite().equals(Direction.NORTH_EAST));
+		assertTrue(Direction.WEST.getOpposite().equals(Direction.EAST));
+		assertTrue(Direction.NORTH_WEST.getOpposite().equals(Direction.SOUTH_EAST));
 	}
 }
