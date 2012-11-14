@@ -51,4 +51,21 @@ public class ExploratedEnvironmentRendererTest {
 		executor.invokeAll(renderers);
 		
 	}
+	
+	@Test
+	public void renderTransparentBackground() throws InterruptedException {
+		final ExecutorService executor = Executors.newFixedThreadPool(1);
+		final String path = "target/explorated-transparent.png";
+		final Environment environment = new BasicEnvironment(300, 300);
+		final Agent a = new TestTaskAgent("a");
+		
+		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer(environment, path, Color.red);
+
+		environment.placeAgentAtTheMiddle(a);
+		
+		List<Callable<Void>> renderers = new ArrayList<Callable<Void>>();
+		renderers.add(renderer);
+		
+		executor.invokeAll(renderers);
+	}
 }

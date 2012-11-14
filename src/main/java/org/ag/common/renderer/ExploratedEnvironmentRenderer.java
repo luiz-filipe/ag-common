@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * space explored by the agents at that point in time.
  * 
  * @author luiz@luizabrahao.com
- *
+ * 
  */
 public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	private static final Logger logger = LoggerFactory
@@ -29,14 +29,22 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	public ExploratedEnvironmentRenderer(Environment environment, String path) {
 		super(environment, path);
 
-		this.colourEnv = Color.white;
-		this.colorVisitedNode = Color.black;
+		this.colourEnv = new Color(255, 255, 255, 0);
+		this.colorVisitedNode = new Color(0, 0, 0, 255);
+	}
+
+	public ExploratedEnvironmentRenderer(Environment environment, String path,
+			Color colorVisitedNode) {
+		super(environment, path);
+
+		this.colourEnv = new Color(255, 255, 255, 0);
+		this.colorVisitedNode = colorVisitedNode;
 	}
 
 	public ExploratedEnvironmentRenderer(Environment environment, String path,
 			Color colourEnv, Color colorVisitedNode) {
 		super(environment, path);
-		
+
 		this.colourEnv = colourEnv;
 		this.colorVisitedNode = colorVisitedNode;
 	}
@@ -45,7 +53,7 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	public Void call() throws Exception {
 		final BufferedImage bufferedImage = new BufferedImage(
 				environment.getNumberOfColumns(),
-				environment.getNumberOfLines(), BufferedImage.TYPE_INT_RGB);
+				environment.getNumberOfLines(), BufferedImage.TYPE_INT_ARGB);
 
 		final Graphics2D g2d = bufferedImage.createGraphics();
 
@@ -68,12 +76,12 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 					g2d.setColor(colorVisitedNode);
 				}
 
-				g2d.fillRect(c, l, c + 1, l + 1);
+				g2d.drawLine(c, l, c, l);
 			}
 		}
 
 		g2d.dispose();
-		
+
 		try {
 			File file = new File(path);
 
@@ -89,7 +97,7 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 
 		logger.debug("Finished rendering environment explored image at: {}",
 				path);
-		
+
 		return null;
 	}
 }
