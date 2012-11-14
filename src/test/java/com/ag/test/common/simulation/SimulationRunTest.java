@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.concurrent.TimeUnit;
 
 import org.ag.common.agent.Agent;
+import org.ag.common.simulation.BasicEnvironment;
+import org.ag.common.simulation.Environment;
 import org.ag.common.simulation.Simulation;
 import org.ag.test.common.mock.TestTaskAgent;
 
@@ -12,8 +14,9 @@ public class SimulationRunTest {
 	public static void main(String[] args) {
 		final Agent a01 = new TestTaskAgent("a01");
 		final Agent a02 = new TestTaskAgent("a02");
-
-		final Simulation simulation = new Simulation("./target/", 200, 200, 20);
+		final Environment env = new BasicEnvironment(200, 200);
+		
+		final Simulation simulation = new Simulation("./target/", env, 20);
 
 		simulation.addAgentMiddleEnvironment(a01);
 		simulation.addAgentMiddleEnvironment(a02);

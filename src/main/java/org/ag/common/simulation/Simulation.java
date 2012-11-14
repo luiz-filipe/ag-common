@@ -26,8 +26,9 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Luiz Abrahao <luiz@luizabrahao.com>
  * 
- * An example of simulation:
- * <pre>
+ *         An example of simulation:
+ * 
+ *         <pre>
  * {@code
  * 	public static void main(String[] args) {
  * 		final Agent a01 = new TestTaskAgent("a01");
@@ -76,16 +77,14 @@ public class Simulation {
 	 * @param basePath
 	 *            The path to a folder in the file system that will be used as
 	 *            reference when saving files
-	 * @param nLines
-	 *            The environment's number of lines
-	 * @param nColumns
-	 *            The environement's number of columns
+	 * @param environment
+	 *            The environment that the simulation will use
 	 * @param poolSize
 	 *            The number of agents that will be running at the same time.
 	 *            (thread-pool size)
 	 */
-	public Simulation(final String basePath, final int nLines,
-			final int nColumns, final int poolSize) {
+	public Simulation(final String basePath, Environment environment,
+			final int poolSize) {
 
 		this.poolSize = poolSize;
 		this.executor = Executors.newScheduledThreadPool(poolSize);
@@ -100,7 +99,7 @@ public class Simulation {
 			this.basePath = basePath;
 		}
 
-		this.environment = new Environment(nLines, nColumns);
+		this.environment = environment;
 		this.agents = new ArrayList<Agent>();
 		this.tasks = new ArrayList<Future<Void>>();
 
