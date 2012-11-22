@@ -56,6 +56,8 @@ public class ComposedImageWriter implements ImageWriter {
 			rendererIndex++;
 		}
 
+		executor.shutdown();
+
 		for (int i = 0; i < futures.size(); i++) {
 			try {
 				layers.put(i, futures.get(i).get());
@@ -70,8 +72,6 @@ public class ComposedImageWriter implements ImageWriter {
 				logger.error(e.getCause().toString());
 			}
 		}
-
-		executor.shutdown();
 	}
 
 	private void writeImage() {
