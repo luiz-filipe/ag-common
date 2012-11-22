@@ -4,10 +4,8 @@ import org.ag.common.simulation.Environment;
 
 public abstract class AbstractRenderer implements Renderer {
 	protected final Environment environment;
-	protected final String path;
 
-	public AbstractRenderer(Environment environment, String path) {
+	public AbstractRenderer(Environment environment) {
 		this.environment = environment;
-		this.path = path;
 	}
 }

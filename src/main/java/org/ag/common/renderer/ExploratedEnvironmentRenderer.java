@@ -3,10 +3,6 @@ package org.ag.common.renderer;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import org.ag.common.simulation.Environment;
 import org.slf4j.Logger;
@@ -26,43 +22,41 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	private final Color colourEnv;
 	private final Color colorVisitedNode;
 
-	public ExploratedEnvironmentRenderer(Environment environment, String path) {
-		super(environment, path);
+	public ExploratedEnvironmentRenderer(Environment environment) {
+		super(environment);
 
 		this.colourEnv = new Color(255, 255, 255, 0);
 		this.colorVisitedNode = new Color(0, 0, 0, 255);
 	}
 
-	public ExploratedEnvironmentRenderer(Environment environment, String path,
+	public ExploratedEnvironmentRenderer(Environment environment,
 			Color colorVisitedNode) {
-		super(environment, path);
+		super(environment);
 
 		this.colourEnv = new Color(255, 255, 255, 0);
 		this.colorVisitedNode = colorVisitedNode;
 	}
 
-	public ExploratedEnvironmentRenderer(Environment environment, String path,
+	public ExploratedEnvironmentRenderer(Environment environment,
 			Color colourEnv, Color colorVisitedNode) {
-		super(environment, path);
+		super(environment);
 
 		this.colourEnv = colourEnv;
 		this.colorVisitedNode = colorVisitedNode;
 	}
 
 	@Override
-	public Void call() throws Exception {
+	public BufferedImage call() throws Exception {
 		final BufferedImage bufferedImage = new BufferedImage(
 				environment.getNumberOfColumns(),
 				environment.getNumberOfLines(), BufferedImage.TYPE_INT_ARGB);
 
 		final Graphics2D g2d = bufferedImage.createGraphics();
 
-		logger.debug("Starting rendering environment explored image.");
-
 		for (int l = 0; l < environment.getNumberOfLines(); l++) {
 			if (Thread.currentThread().isInterrupted()) {
 				logger.info("Explored environment renderer was interrupted "
-						+ "and will not complete for image: {}.", path);
+						+ "and will not complete...");
 
 				g2d.dispose();
 				break;
@@ -82,22 +76,8 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 
 		g2d.dispose();
 
-		try {
-			File file = new File(path);
+		logger.trace("Finished rendering environment explored image.");
 
-			logger.debug("Starting writing environment explored image at: {}",
-					path);
-			ImageIO.write(bufferedImage, "png", file);
-
-		} catch (IOException e) {
-			logger.error("Error rendering explored space. Could not write "
-					+ "image at: {}", path);
-			logger.error(e.getMessage());
-		}
-
-		logger.debug("Finished rendering environment explored image at: {}",
-				path);
-
-		return null;
+		return bufferedImage;
 	}
 }

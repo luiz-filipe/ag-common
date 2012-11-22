@@ -14,7 +14,10 @@ import net.jcip.annotations.NotThreadSafe;
 
 import org.ag.common.agent.Agent;
 import org.ag.common.renderer.ExploratedEnvironmentRenderer;
+import org.ag.common.renderer.ImageWriter;
+import org.ag.common.renderer.ImageWriterTask;
 import org.ag.common.renderer.Renderer;
+import org.ag.common.renderer.SingleRendererImageWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -175,10 +178,14 @@ public class Simulation {
 	 * @param unit
 	 *            Delay's time unit
 	 */
-	public void scheduleRenderer(final Renderer renderer, final long delay,
-			final TimeUnit unit) {
+	public void scheduleRenderer(final Renderer renderer,
+			final String filename, final long delay, final TimeUnit unit) {
 
-		scheduledRenderers.add(new ScheduledTaskWrapper(renderer, delay, unit));
+		final ImageWriter iw = new SingleRendererImageWriter(renderer, basePath
+				+ filename);
+		final ImageWriterTask iwt = new ImageWriterTask(iw);
+
+		scheduledRenderers.add(new ScheduledTaskWrapper(iwt, delay, unit));
 	}
 
 	/**
@@ -196,10 +203,9 @@ public class Simulation {
 	 */
 	public void scheduleEnvironmentExploredRenderer(final String filename,
 			final long delay, final TimeUnit unit) {
-		Renderer r = new ExploratedEnvironmentRenderer(environment, basePath
-				+ filename);
+		Renderer r = new ExploratedEnvironmentRenderer(environment);
 
-		this.scheduleRenderer(r, delay, unit);
+		this.scheduleRenderer(r, filename, delay, unit);
 	}
 
 	/**
@@ -229,10 +235,10 @@ public class Simulation {
 			final Color colourEnv, final Color colourVisited, final long delay,
 			final TimeUnit unit) {
 
-		Renderer r = new ExploratedEnvironmentRenderer(environment, basePath
-				+ filename, colourEnv, colourVisited);
+		Renderer r = new ExploratedEnvironmentRenderer(environment, colourEnv,
+				colourVisited);
 
-		this.scheduleRenderer(r, delay, unit);
+		this.scheduleRenderer(r, filename, delay, unit);
 	}
 
 	/**

@@ -16,7 +16,7 @@ public class SimulationRunTest {
 		final Agent a02 = new TestTaskAgent("a02");
 		final Environment env = new BasicEnvironment(200, 200);
 		
-		final Simulation simulation = new Simulation("./target/", env, 20);
+		final Simulation simulation = new Simulation("target/", env, 20);
 
 		simulation.addAgentMiddleEnvironment(a01);
 		simulation.addAgentMiddleEnvironment(a02);
