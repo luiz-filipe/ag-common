@@ -3,7 +3,16 @@ package org.ag.common.env;
 import java.awt.Color;
 import java.awt.Dimension;
 
-//TODO document
+/**
+ * An environment element is an abstraction to anything that could be added to
+ * the environment grid. For example, nodes that could represent obstacles in
+ * the element. Each element has a dimension, a colour that is used by the
+ * renderer, and identification string that should be unique for each
+ * environment.
+ * 
+ * @author Luiz Abrahao <luiz@luizabrahao.com>
+ *
+ */
 public class EnvironmentElement {
 	private final String id;
 	private final Dimension dimension;
