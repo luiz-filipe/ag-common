@@ -22,23 +22,23 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	private final Color colourEnv;
 	private final Color colorVisitedNode;
 
-	public ExploratedEnvironmentRenderer(Environment environment) {
+	public ExploratedEnvironmentRenderer(final Environment environment) {
 		super(environment);
 
 		this.colourEnv = new Color(255, 255, 255, 0);
 		this.colorVisitedNode = new Color(0, 0, 0, 255);
 	}
 
-	public ExploratedEnvironmentRenderer(Environment environment,
-			Color colorVisitedNode) {
+	public ExploratedEnvironmentRenderer(final Environment environment,
+			final Color colorVisitedNode) {
 		super(environment);
 
 		this.colourEnv = new Color(255, 255, 255, 0);
 		this.colorVisitedNode = colorVisitedNode;
 	}
 
-	public ExploratedEnvironmentRenderer(Environment environment,
-			Color colourEnv, Color colorVisitedNode) {
+	public ExploratedEnvironmentRenderer(final Environment environment,
+			final Color colourEnv, final Color colorVisitedNode) {
 		super(environment);
 
 		this.colourEnv = colourEnv;
@@ -48,12 +48,12 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	@Override
 	public BufferedImage call() throws Exception {
 		final BufferedImage bufferedImage = new BufferedImage(
-				environment.getNumberOfColumns(),
-				environment.getNumberOfLines(), BufferedImage.TYPE_INT_ARGB);
+				environment.getWidth(), environment.getHeight(),
+				BufferedImage.TYPE_INT_ARGB);
 
 		final Graphics2D g2d = bufferedImage.createGraphics();
 
-		for (int l = 0; l < environment.getNumberOfLines(); l++) {
+		for (int l = 0; l < environment.getHeight(); l++) {
 			if (Thread.currentThread().isInterrupted()) {
 				logger.info("Explored environment renderer was interrupted "
 						+ "and will not complete...");
@@ -62,7 +62,7 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 				break;
 			}
 
-			for (int c = 0; c < environment.getNumberOfColumns(); c++) {
+			for (int c = 0; c < environment.getWidth(); c++) {
 				if (environment.getNodeAt(l, c).getAgents() == null) {
 					g2d.setColor(colourEnv);
 
@@ -75,7 +75,6 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 		}
 
 		g2d.dispose();
-
 		logger.trace("Finished rendering environment explored image.");
 
 		return bufferedImage;

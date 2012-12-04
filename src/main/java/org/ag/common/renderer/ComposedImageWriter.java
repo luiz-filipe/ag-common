@@ -81,8 +81,8 @@ public class ComposedImageWriter implements ImageWriter {
 			logger.debug("Starting writing composed image at: {}", path);
 
 			final BufferedImage finalImage = new BufferedImage(
-					environment.getNumberOfLines(),
-					environment.getNumberOfColumns(),
+					environment.getWidth(),
+					environment.getHeight(),
 					BufferedImage.TYPE_INT_ARGB);
 
 			final Graphics2D g2d = finalImage.createGraphics();

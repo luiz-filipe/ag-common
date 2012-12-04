@@ -1,5 +1,7 @@
 package org.ag.common.env;
 
+import java.awt.Dimension;
+
 /**
  * The EnvironmentFactory class is an utility class that holds the methods to
  * generate environments to be used for the simulation.
@@ -24,12 +26,11 @@ public class EnvironmentFactory {
 	 * @return Node[][] A two dimensional array of interconnected BasicNode
 	 *         objects.
 	 */
-	public static Node[][] createBasicNodeGrid(final int nLines,
-			final int nColunms) {
-		Node[][] nodes = new Node[nLines][nColunms];
+	public static Node[][] createBasicNodeGrid(final Dimension dimension) {
+		Node[][] nodes = new Node[dimension.height][dimension.width];
 
-		for (int l = 0; l < nLines; l++) {
-			for (int c = 0; c < nColunms; c++) {
+		for (int l = 0; l < dimension.height; l++) {
+			for (int c = 0; c < dimension.width; c++) {
 				nodes[l][c] = new BasicNode("n" + l + "," + c);
 
 				if (c != 0) {
@@ -45,7 +46,7 @@ public class EnvironmentFactory {
 							nodes[l - 1][c - 1]);
 				}
 
-				if ((l != 0) && (c != nColunms - 1)) {
+				if ((l != 0) && (c != dimension.width - 1)) {
 					nodes[l][c].setNeighbours(Direction.NORTH_EAST,
 							nodes[l - 1][c + 1]);
 				}

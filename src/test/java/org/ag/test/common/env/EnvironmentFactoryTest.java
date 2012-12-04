@@ -2,6 +2,8 @@ package org.ag.test.common.env;
 
 import static org.junit.Assert.assertTrue;
 
+import java.awt.Dimension;
+
 import org.ag.common.env.Direction;
 import org.ag.common.env.EnvironmentFactory;
 import org.ag.common.env.Node;
@@ -11,7 +13,8 @@ public class EnvironmentFactoryTest {
 
 	@Test
 	public void basicNodeGrid() {
-		Node[][] grid = EnvironmentFactory.createBasicNodeGrid(3, 3);
+		final Dimension d = new Dimension(3, 3);
+		final Node[][] grid = EnvironmentFactory.createBasicNodeGrid(d);
 		
 		assertTrue(grid[0][0].getId().equals("n0,0"));
 		assertTrue(grid[1][0].getId().equals("n1,0"));
