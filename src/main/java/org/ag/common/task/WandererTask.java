@@ -29,7 +29,7 @@ public class WandererTask extends AbstractTask {
 	@Override
 	public void execute(final Agent agent) {
 		final Node neighbourNode = agent.getCurrentNode().getNeighbour(
-				Direction.randomDirection());
+				Direction.getRandomDirection());
 
 		if (neighbourNode != null) {
 			neighbourNode.addAgent(agent);

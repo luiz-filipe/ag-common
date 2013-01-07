@@ -33,7 +33,7 @@ public class DirectionTest {
 		int nNorthWest = 0;
 
 		for (int i = 0; i < nInteractions; i++) {
-			Direction direction = Direction.randomDirection();
+			Direction direction = Direction.getRandomDirection();
 
 			switch (direction) {
 			case NORTH:
