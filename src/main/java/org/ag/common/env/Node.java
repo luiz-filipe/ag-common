@@ -147,4 +147,11 @@ public interface Node {
 	 */
 	CommunicationStimulus getCommunicationStimulus(
 			final CommunicationStimulusType communicationStimulusType);
-}
+	
+	/**
+	 * This method removes all links from the node to its neighbours. It's used
+	 * when a node is replaced by other such as nodes from an environment
+	 * element.
+	 */
+	void disconnectFromNeighbours();
+} 

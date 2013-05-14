@@ -111,4 +111,18 @@ public abstract class AbsractEnvironment implements Environment {
 	public List<EnvironmentElement> getEnvironmentElements() {
 		return Collections.unmodifiableList(this.environmentElements);
 	}
+
+	@Override
+	public EnvironmentElement getEnvironmentElement(String id) {
+		for (EnvironmentElement element : this.environmentElements) {
+			if (element.getId().equals(id)) {
+				return element;
+			}
+		}
+
+		logger.error("Could not locate enviornment element with id '{}', " +
+				"returning null", id);
+		
+		return null;
+	}
 }

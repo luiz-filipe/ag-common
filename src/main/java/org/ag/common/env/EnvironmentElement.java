@@ -93,7 +93,10 @@ public class EnvironmentElement {
 								currentNode.getNeighbour(Direction.NORTH_WEST));
 					}
 
+					Node nodeToBeReplaced = currentNode;
 					currentNode = currentNode.getNeighbour(Direction.EAST);
+					nodeToBeReplaced.disconnectFromNeighbours();
+					nodeToBeReplaced = null;
 				}
 
 				// middle columns updates

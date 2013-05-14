@@ -299,4 +299,8 @@ public class Simulation {
 
 		rendererExecutor.shutdown();
 	}
+	
+	protected Environment getEnvironment() {
+		return environment;
+	}
 }

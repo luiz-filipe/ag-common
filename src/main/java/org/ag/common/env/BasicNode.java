@@ -328,4 +328,16 @@ public class BasicNode implements Node {
 
 		return null;
 	}
+
+	@Override
+	public void disconnectFromNeighbours() {
+		north = null;
+		northEast = null;
+		east = null;
+		southEast = null;
+		south = null;
+		southWest = null;
+		west = null;
+		northWest = null;
+	}
 }

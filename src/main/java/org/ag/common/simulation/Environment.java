@@ -14,5 +14,6 @@ public interface Environment {
 	int getWidth();
 	List<EnvironmentElement> getEnvironmentElements();
 	void addEnvironmentElement(EnvironmentElement element, int x, int y);
+	EnvironmentElement getEnvironmentElement(String id);
 
 }
