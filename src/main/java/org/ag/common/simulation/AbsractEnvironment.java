@@ -105,6 +105,7 @@ public abstract class AbsractEnvironment implements Environment {
 
 		this.environmentElements.add(element);
 		element.connectToNeighbours(env[line][column]);
+		this.replaceNodesWithEnvironmentElement(element, line, column);
 	}
 
 	@Override
@@ -120,9 +121,21 @@ public abstract class AbsractEnvironment implements Environment {
 			}
 		}
 
-		logger.error("Could not locate enviornment element with id '{}', " +
-				"returning null", id);
-		
+		logger.error("Could not locate enviornment element with id '{}', "
+				+ "returning null", id);
+
 		return null;
+	}
+
+	private void replaceNodesWithEnvironmentElement(
+			final EnvironmentElement element, final int line, final int column) {
+		
+		for (int l = line; l < line + element.getDimension().height; l++) {
+			for (int c = column; c < column + element.getDimension().width; c++) {
+				env[l][c].disconnectFromNeighbours();
+				env[l][c] = null;
+				env[l][c] = element.getNode(l - line, c - column);
+			}
+		}
 	}
 }
