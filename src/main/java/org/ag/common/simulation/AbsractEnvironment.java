@@ -129,7 +129,7 @@ public abstract class AbsractEnvironment implements Environment {
 
 	private void replaceNodesWithEnvironmentElement(
 			final EnvironmentElement element, final int line, final int column) {
-		
+
 		for (int l = line; l < line + element.getDimension().height; l++) {
 			for (int c = column; c < column + element.getDimension().width; c++) {
 				env[l][c].disconnectFromNeighbours();
