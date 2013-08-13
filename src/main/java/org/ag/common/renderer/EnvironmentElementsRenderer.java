@@ -61,9 +61,10 @@ public class EnvironmentElementsRenderer extends AbstractRenderer {
 			}
 
 			g2d.setColor(element.getColour());
-			g2d.drawRect(horizontalOffset, verticalOffset, horizontalOffset
-					+ element.getDimension().width,
-					verticalOffset + element.getDimension().height);
+			g2d.drawRect(horizontalOffset, 
+						verticalOffset, 
+						element.getDimension().width,
+						element.getDimension().height);
 		}
 
 		g2d.dispose();

@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import net.jcip.annotations.NotThreadSafe;
 
 import org.ag.common.agent.Agent;
+import org.ag.common.renderer.EnvironmentElementsRenderer;
 import org.ag.common.renderer.ExploratedEnvironmentRenderer;
 import org.ag.common.renderer.ImageWriter;
 import org.ag.common.renderer.ImageWriterTask;
@@ -59,7 +60,7 @@ public class Simulation {
 			.getLogger(Simulation.class);
 	private static final int numberOfConcurrentRenderers = 10;
 
-	private final ScheduledExecutorService executor;
+	protected final ScheduledExecutorService executor;
 	private final ScheduledExecutorService rendererExecutor;
 	private final int poolSize;
 	private final String basePath;
@@ -241,6 +242,13 @@ public class Simulation {
 		this.scheduleRenderer(r, filename, delay, unit);
 	}
 
+	public void scheduleEnvironmentElementRenderer(final String filename,
+			final long delay, final TimeUnit unit) {
+		
+		Renderer r = new EnvironmentElementsRenderer(environment);
+		this.scheduleRenderer(r, filename, delay, unit);
+	}
+
 	/**
 	 * <p>
 	 * Firstly all the agents are submitted to the agents' executor service,
@@ -290,14 +298,19 @@ public class Simulation {
 				return null;
 			}
 		}, time, unit);
+		
+		this.submitRenderers();
 
+	}
+
+	protected void submitRenderers() {
 		for (ScheduledTaskWrapper taskWrapper : scheduledRenderers) {
 			scheduledRenderersFutures.add(rendererExecutor.schedule(
 					taskWrapper.getTask(), taskWrapper.getDelay(),
 					taskWrapper.getUnit()));
 		}
 
-		rendererExecutor.shutdown();
+		rendererExecutor.shutdown();		
 	}
 	
 	protected Environment getEnvironment() {

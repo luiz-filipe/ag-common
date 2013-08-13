@@ -28,8 +28,8 @@ public class EnvironmentElementRendererTest {
 		final TestEnvElement e3 = new TestEnvElement("e3", new Dimension(30, 30),  Color.green);
 		
 		environment.addEnvironmentElement(e1, 10, 10);
-		environment.addEnvironmentElement(e2, 20, 20);
-		environment.addEnvironmentElement(e3, 30, 30);
+		environment.addEnvironmentElement(e2, 11, 11);
+		environment.addEnvironmentElement(e3, 12, 12);
 		
 		List<Callable<BufferedImage>> renderers = new ArrayList<Callable<BufferedImage>>();
 		renderers.add(renderer);
