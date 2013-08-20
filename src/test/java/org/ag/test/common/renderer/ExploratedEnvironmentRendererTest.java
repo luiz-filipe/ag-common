@@ -1,7 +1,6 @@
 package org.ag.test.common.renderer;
 
 import java.awt.Color;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -12,6 +11,7 @@ import java.util.concurrent.Future;
 
 import org.ag.common.agent.Agent;
 import org.ag.common.renderer.ExploratedEnvironmentRenderer;
+import org.ag.common.renderer.RenderedImage;
 import org.ag.common.simulation.BasicEnvironment;
 import org.ag.common.simulation.Environment;
 import org.ag.test.common.mock.TestTaskAgent;
@@ -25,15 +25,15 @@ public class ExploratedEnvironmentRendererTest {
 		final String path = "target/explorated-default.png";
 		final Environment environment = new BasicEnvironment(3, 3);
 		final Agent a = new TestTaskAgent("a");
-		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer(environment);
+		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer("test-exp-basiccolor.png", environment);
 		
 		environment.placeAgentAtTheMiddle(a);
 		
-		List<Callable<BufferedImage>> renderers = new ArrayList<Callable<BufferedImage>>();
+		List<Callable<RenderedImage>> renderers = new ArrayList<Callable<RenderedImage>>();
 		renderers.add(renderer);
 		
-		final List<Future<BufferedImage>> futures = executor.invokeAll(renderers);
-		ImageWriter.writeImage(futures.get(0).get(), path);
+		final List<Future<RenderedImage>> futures = executor.invokeAll(renderers);
+		ImageWriter.writeImage(futures.get(0).get().getImage(), path);
 	}
 	
 	@Test
@@ -45,17 +45,17 @@ public class ExploratedEnvironmentRendererTest {
 		final String path = "target/explorated-custom.png";
 		final Environment environment = new BasicEnvironment(3, 3);
 		final Agent a = new TestTaskAgent("a");
-		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer(environment, colourEnv, colourVisitedNode);
+		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer("test-env-exp-color.png", environment, colourEnv, colourVisitedNode);
 		
 		environment.placeAgentAtTheMiddle(a);
 		
-		List<Callable<BufferedImage>> renderers = new ArrayList<Callable<BufferedImage>>();
+		List<Callable<RenderedImage>> renderers = new ArrayList<Callable<RenderedImage>>();
 		renderers.add(renderer);
 		
 		executor.invokeAll(renderers);
 		
-		final List<Future<BufferedImage>> futures = executor.invokeAll(renderers);
-		ImageWriter.writeImage(futures.get(0).get(), path);
+		final List<Future<RenderedImage>> futures = executor.invokeAll(renderers);
+		ImageWriter.writeImage(futures.get(0).get().getImage(), path);
 	}
 	
 	@Test
@@ -65,16 +65,16 @@ public class ExploratedEnvironmentRendererTest {
 		final Environment environment = new BasicEnvironment(300, 300);
 		final Agent a = new TestTaskAgent("a");
 		
-		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer(environment, Color.red);
+		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer("test-env-exp-trans.png", environment, Color.red);
 
 		environment.placeAgentAtTheMiddle(a);
 		
-		List<Callable<BufferedImage>> renderers = new ArrayList<Callable<BufferedImage>>();
+		List<Callable<RenderedImage>> renderers = new ArrayList<Callable<RenderedImage>>();
 		renderers.add(renderer);
 		
 		executor.invokeAll(renderers);
 		
-		final List<Future<BufferedImage>> futures = executor.invokeAll(renderers);
-		ImageWriter.writeImage(futures.get(0).get(), path);
+		final List<Future<RenderedImage>> futures = executor.invokeAll(renderers);
+		ImageWriter.writeImage(futures.get(0).get().getImage(), path);
 	}
 }
