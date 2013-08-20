@@ -27,8 +27,8 @@ public class ComposedImageWriterTest {
 		envB.placeAgentAt(agentC, 150, 150);
 		envB.placeAgentAtTheMiddle(agentD);
 		
-		final Renderer r01 = new ExploratedEnvironmentRenderer(envA, Color.blue);
-		final Renderer r02 = new ExploratedEnvironmentRenderer(envB, Color.red);
+		final Renderer r01 = new ExploratedEnvironmentRenderer("a", envA, Color.blue);
+		final Renderer r02 = new ExploratedEnvironmentRenderer("b", envB, Color.red);
 		final ComposedImageWriter rm = new ComposedImageWriter(envA, "target/manager-test.png");
 		
 		rm.addRenderer(r01);

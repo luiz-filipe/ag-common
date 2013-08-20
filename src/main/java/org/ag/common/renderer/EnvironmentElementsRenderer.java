@@ -24,12 +24,12 @@ public class EnvironmentElementsRenderer extends AbstractRenderer {
 	private static final Logger logger = LoggerFactory
 			.getLogger(EnvironmentElementsRenderer.class);
 
-	public EnvironmentElementsRenderer(Environment environment) {
-		super(environment);
+	public EnvironmentElementsRenderer(String name, Environment environment) {
+		super(name, environment);
 	}
 
 	@Override
-	public BufferedImage call() throws Exception {
+	public RenderedImage call() throws Exception {
 		final BufferedImage bufferedImage = new BufferedImage(
 				environment.getWidth(), environment.getHeight(),
 				BufferedImage.TYPE_INT_ARGB);
@@ -68,6 +68,6 @@ public class EnvironmentElementsRenderer extends AbstractRenderer {
 		}
 
 		g2d.dispose();
-		return bufferedImage;
+		return new RenderedImage(name, bufferedImage);
 	}
 }

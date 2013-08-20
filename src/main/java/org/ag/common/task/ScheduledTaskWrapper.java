@@ -1,4 +1,4 @@
-package org.ag.common.simulation;
+package org.ag.common.task;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
@@ -14,12 +14,12 @@ import net.jcip.annotations.Immutable;
  *
  */
 @Immutable
-public class ScheduledTaskWrapper {
+public class ScheduledTaskWrapper<T> {
 	private final TimeUnit unit;
 	private final long delay;
-	private final Callable<Void> task;
+	private final Callable<T> task;
 
-	public ScheduledTaskWrapper(Callable<Void> task, long delay, TimeUnit unit) {
+	public ScheduledTaskWrapper(Callable<T> task, long delay, TimeUnit unit) {
 		this.task = task;
 		this.delay = delay;
 		this.unit = unit;
@@ -27,5 +27,5 @@ public class ScheduledTaskWrapper {
 
 	public TimeUnit getUnit() { return unit; }
 	public long getDelay() { return delay; }
-	public Callable<Void> getTask() { return task; }
+	public Callable<T> getTask() { return task; }
 }

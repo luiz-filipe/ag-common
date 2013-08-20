@@ -22,31 +22,31 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 	private final Color colourEnv;
 	private final Color colorVisitedNode;
 
-	public ExploratedEnvironmentRenderer(final Environment environment) {
-		super(environment);
+	public ExploratedEnvironmentRenderer(String name, Environment environment) {
+		super(name, environment);
 
 		this.colourEnv = new Color(255, 255, 255, 0);
 		this.colorVisitedNode = new Color(0, 0, 0, 255);
 	}
 
-	public ExploratedEnvironmentRenderer(final Environment environment,
+	public ExploratedEnvironmentRenderer(String name, Environment environment,
 			final Color colorVisitedNode) {
-		super(environment);
+		super(name, environment);
 
 		this.colourEnv = new Color(255, 255, 255, 0);
 		this.colorVisitedNode = colorVisitedNode;
 	}
 
-	public ExploratedEnvironmentRenderer(final Environment environment,
-			final Color colourEnv, final Color colorVisitedNode) {
-		super(environment);
+	public ExploratedEnvironmentRenderer(String name, Environment environment,
+			Color colourEnv, Color colorVisitedNode) {
+		super(name, environment);
 
 		this.colourEnv = colourEnv;
 		this.colorVisitedNode = colorVisitedNode;
 	}
 
 	@Override
-	public BufferedImage call() throws Exception {
+	public RenderedImage call() throws Exception {
 		final BufferedImage bufferedImage = new BufferedImage(
 				environment.getWidth(), environment.getHeight(),
 				BufferedImage.TYPE_INT_ARGB);
@@ -77,6 +77,6 @@ public class ExploratedEnvironmentRenderer extends AbstractRenderer {
 		g2d.dispose();
 		logger.trace("Finished rendering environment explored image.");
 
-		return bufferedImage;
+		return new RenderedImage(name, bufferedImage);
 	}
 }

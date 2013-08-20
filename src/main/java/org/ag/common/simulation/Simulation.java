@@ -7,7 +7,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import net.jcip.annotations.NotThreadSafe;
@@ -15,10 +14,8 @@ import net.jcip.annotations.NotThreadSafe;
 import org.ag.common.agent.Agent;
 import org.ag.common.renderer.EnvironmentElementsRenderer;
 import org.ag.common.renderer.ExploratedEnvironmentRenderer;
-import org.ag.common.renderer.ImageWriter;
-import org.ag.common.renderer.ImageWriterTask;
 import org.ag.common.renderer.Renderer;
-import org.ag.common.renderer.SingleRendererImageWriter;
+import org.ag.common.renderer.RendererManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,20 +55,15 @@ import org.slf4j.LoggerFactory;
 public class Simulation {
 	private static final Logger logger = LoggerFactory
 			.getLogger(Simulation.class);
-	private static final int numberOfConcurrentRenderers = 10;
 
 	protected final ScheduledExecutorService executor;
-	private final ScheduledExecutorService rendererExecutor;
 	private final int poolSize;
 	private final String basePath;
 
 	private final Environment environment;
 	private final List<Agent> agents;
 	private final List<Future<Void>> tasks;
-	private final List<ScheduledTaskWrapper> scheduledRenderers;
-	private final List<ScheduledFuture<Void>> scheduledRenderersFutures;
-
-	private int renderersTimeoutInSeconds;
+	private final RendererManager rendererManager;
 
 	/**
 	 * The default constructor for a simulation. Defines the environment's
@@ -92,9 +84,6 @@ public class Simulation {
 
 		this.poolSize = poolSize;
 		this.executor = Executors.newScheduledThreadPool(poolSize);
-		this.rendererExecutor = Executors
-				.newScheduledThreadPool(numberOfConcurrentRenderers);
-		this.renderersTimeoutInSeconds = 30;
 
 		if (basePath.lastIndexOf("/") != basePath.length() - 1) {
 			this.basePath = basePath + "/";
@@ -106,9 +95,8 @@ public class Simulation {
 		this.environment = environment;
 		this.agents = new ArrayList<Agent>();
 		this.tasks = new ArrayList<Future<Void>>();
+		this.rendererManager = new RendererManager(basePath);
 
-		this.scheduledRenderers = new ArrayList<ScheduledTaskWrapper>();
-		this.scheduledRenderersFutures = new ArrayList<ScheduledFuture<Void>>();
 	}
 
 	public int getPoolSize() {
@@ -118,25 +106,9 @@ public class Simulation {
 	public int getNumberOfAgents() {
 		return this.agents.size();
 	}
-
-	public int getRenderersTimeoutInSeconds() {
-		return renderersTimeoutInSeconds;
-	}
-
-	/**
-	 * Users can schedule their on renderers. After submitting all of them the
-	 * simulation automatically shutdown the renderers' executor services and
-	 * waits for the renderers to terminate up to the number of seconds
-	 * specified by the parameter <em>renderersTimeoutInSeconds</em>. If after
-	 * this amount of time, there still are renderers running, the executor
-	 * service will try to force the shutdown.
-	 * 
-	 * @param renderersTimeoutInSeconds
-	 *            seconds the executor service should wait for the renderers to
-	 *            terminate.
-	 */
-	public void setRenderersTimeoutInSeconds(final int renderersTimeoutInSeconds) {
-		this.renderersTimeoutInSeconds = renderersTimeoutInSeconds;
+	
+	public String getBasePath() {
+		return this.basePath;
 	}
 
 	/**
@@ -181,12 +153,8 @@ public class Simulation {
 	 */
 	public void scheduleRenderer(final Renderer renderer,
 			final String filename, final long delay, final TimeUnit unit) {
-
-		final ImageWriter iw = new SingleRendererImageWriter(renderer, basePath
-				+ filename);
-		final ImageWriterTask iwt = new ImageWriterTask(iw);
-
-		scheduledRenderers.add(new ScheduledTaskWrapper(iwt, delay, unit));
+		
+		rendererManager.scheduleRender(renderer, filename, delay, unit);
 	}
 
 	/**
@@ -204,8 +172,8 @@ public class Simulation {
 	 */
 	public void scheduleEnvironmentExploredRenderer(final String filename,
 			final long delay, final TimeUnit unit) {
-		Renderer r = new ExploratedEnvironmentRenderer(environment);
-
+		
+		final Renderer r = new ExploratedEnvironmentRenderer(filename, environment);
 		this.scheduleRenderer(r, filename, delay, unit);
 	}
 
@@ -236,7 +204,7 @@ public class Simulation {
 			final Color colourEnv, final Color colourVisited, final long delay,
 			final TimeUnit unit) {
 
-		Renderer r = new ExploratedEnvironmentRenderer(environment, colourEnv,
+		Renderer r = new ExploratedEnvironmentRenderer(filename, environment, colourEnv,
 				colourVisited);
 
 		this.scheduleRenderer(r, filename, delay, unit);
@@ -245,8 +213,12 @@ public class Simulation {
 	public void scheduleEnvironmentElementRenderer(final String filename,
 			final long delay, final TimeUnit unit) {
 		
-		Renderer r = new EnvironmentElementsRenderer(environment);
+		Renderer r = new EnvironmentElementsRenderer(filename, environment);
 		this.scheduleRenderer(r, filename, delay, unit);
+	}
+
+	public void composeImage(String name, String[] imagesNames) {
+		this.rendererManager.writeComposeImage(name, imagesNames);
 	}
 
 	/**
@@ -299,21 +271,15 @@ public class Simulation {
 			}
 		}, time, unit);
 		
-		this.submitRenderers();
+		rendererManager.run();
 
 	}
 
-	protected void submitRenderers() {
-		for (ScheduledTaskWrapper taskWrapper : scheduledRenderers) {
-			scheduledRenderersFutures.add(rendererExecutor.schedule(
-					taskWrapper.getTask(), taskWrapper.getDelay(),
-					taskWrapper.getUnit()));
-		}
-
-		rendererExecutor.shutdown();		
-	}
-	
 	protected Environment getEnvironment() {
 		return environment;
+	}
+	
+	protected RendererManager getRendererManager() {
+		return rendererManager; 
 	}
 }
