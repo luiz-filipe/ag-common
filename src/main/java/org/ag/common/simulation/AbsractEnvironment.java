@@ -8,6 +8,7 @@ import java.util.List;
 import net.jcip.annotations.GuardedBy;
 
 import org.ag.common.agent.Agent;
+import org.ag.common.env.Coordinate;
 import org.ag.common.env.EnvironmentElement;
 import org.ag.common.env.Node;
 import org.slf4j.Logger;
@@ -137,5 +138,10 @@ public abstract class AbsractEnvironment implements Environment {
 				env[l][c] = element.getNode(l - line, c - column);
 			}
 		}
+	}
+	
+	@Override
+	public Coordinate getCentre() {
+		return new Coordinate(getHeight() / 2, getWidth() / 2);
 	}
 }

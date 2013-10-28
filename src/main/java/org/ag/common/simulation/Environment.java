@@ -3,6 +3,7 @@ package org.ag.common.simulation;
 import java.util.List;
 
 import org.ag.common.agent.Agent;
+import org.ag.common.env.Coordinate;
 import org.ag.common.env.EnvironmentElement;
 import org.ag.common.env.Node;
 
@@ -15,5 +16,6 @@ public interface Environment {
 	List<EnvironmentElement> getEnvironmentElements();
 	void addEnvironmentElement(EnvironmentElement element, int x, int y);
 	EnvironmentElement getEnvironmentElement(String id);
+	Coordinate getCentre();
 
 }
