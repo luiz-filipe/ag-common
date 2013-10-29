@@ -7,12 +7,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Tells users that the annotated method must not be used in their code, that
- * is, it is of exclusive use of the framework itself.
- * 
- * If you call any method that has this annotation in your code, you are doing
- * something wrong.
- * 
+ * Some methods should be made public because they need to be accessed by other parts of the framework but there are
+ * some cases that these methods should be executed by the framework only. Users should not call these methods because
+ * they may break thread-safety for example.
+ *
+ * <p>This annotation documents such methods, to make sure they are not used when they shouldn't be used.</p>
+ *
  * @author Luiz Abrahao <luiz@luizabrahao.com>
  * 
  */

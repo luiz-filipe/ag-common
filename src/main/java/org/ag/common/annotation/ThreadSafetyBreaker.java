@@ -7,12 +7,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Indicates that the method breaks thread-safety. It is to be used with
- * PseudoThreadSafe annotation. This is useful to document what methods of the
- * class cause it to not be thread-safe.
- * 
+ * Documents which methods break thread-safety. Usually used in conjunction to the <i>PseudoThreadSafe</i> annotation.
+ *
+ * @see PseudoThreadSafe
  * @author Luiz Abrahao <luiz@luizabrahao.com>
- * 
  */
 @Documented
 @Target(value = ElementType.METHOD)
