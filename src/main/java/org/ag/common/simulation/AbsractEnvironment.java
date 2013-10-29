@@ -8,6 +8,7 @@ import java.util.List;
 import net.jcip.annotations.GuardedBy;
 
 import org.ag.common.agent.Agent;
+import org.ag.common.env.BasicEnvironmentElement;
 import org.ag.common.env.Coordinate;
 import org.ag.common.env.EnvironmentElement;
 import org.ag.common.env.Node;
@@ -28,7 +29,7 @@ public abstract class AbsractEnvironment implements Environment {
 	public AbsractEnvironment(Node[][] env, Dimension dimension) {
 		this.env = env;
 		this.dimension = dimension;
-		this.environmentElements = new ArrayList<EnvironmentElement>();
+		this.environmentElements = new ArrayList<BasicEnvironmentElement>();
 	}
 
 	@Override
@@ -116,7 +117,7 @@ public abstract class AbsractEnvironment implements Environment {
 
 	@Override
 	public EnvironmentElement getEnvironmentElement(String id) {
-		for (EnvironmentElement element : this.environmentElements) {
+		for (BasicEnvironmentElement element : this.environmentElements) {
 			if (element.getId().equals(id)) {
 				return element;
 			}
