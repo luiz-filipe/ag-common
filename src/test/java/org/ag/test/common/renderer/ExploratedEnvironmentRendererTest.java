@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.ag.common.agent.Agent;
-import org.ag.common.renderer.ExploratedEnvironmentRenderer;
+import org.ag.common.renderer.ExploredEnvironmentRenderer;
 import org.ag.common.renderer.RenderedImage;
 import org.ag.common.simulation.BasicEnvironment;
 import org.ag.common.simulation.Environment;
@@ -25,7 +25,7 @@ public class ExploratedEnvironmentRendererTest {
 		final String path = "target/explorated-default.png";
 		final Environment environment = new BasicEnvironment(3, 3);
 		final Agent a = new TestTaskAgent("a");
-		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer("test-exp-basiccolor.png", environment);
+		final ExploredEnvironmentRenderer renderer = new ExploredEnvironmentRenderer("test-exp-basiccolor.png", environment);
 		
 		environment.placeAgentAtTheMiddle(a);
 		
@@ -45,7 +45,7 @@ public class ExploratedEnvironmentRendererTest {
 		final String path = "target/explorated-custom.png";
 		final Environment environment = new BasicEnvironment(3, 3);
 		final Agent a = new TestTaskAgent("a");
-		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer("test-env-exp-color.png", environment, colourEnv, colourVisitedNode);
+		final ExploredEnvironmentRenderer renderer = new ExploredEnvironmentRenderer("test-env-exp-color.png", environment, colourEnv, colourVisitedNode);
 		
 		environment.placeAgentAtTheMiddle(a);
 		
@@ -65,7 +65,7 @@ public class ExploratedEnvironmentRendererTest {
 		final Environment environment = new BasicEnvironment(300, 300);
 		final Agent a = new TestTaskAgent("a");
 		
-		final ExploratedEnvironmentRenderer renderer = new ExploratedEnvironmentRenderer("test-env-exp-trans.png", environment, Color.red);
+		final ExploredEnvironmentRenderer renderer = new ExploredEnvironmentRenderer("test-env-exp-trans.png", environment, Color.red);
 
 		environment.placeAgentAtTheMiddle(a);
 		
