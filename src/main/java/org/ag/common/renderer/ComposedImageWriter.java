@@ -65,6 +65,9 @@ public class ComposedImageWriter extends AbstractImageWriter {
 
         try {
             final File file = new File(this.getFullPath());
+            file.mkdirs();
+            file.createNewFile();
+
             final File firstImageFile = new File(path + File.separator + imagesNames[0]);
             final BufferedImage firstImage = ImageIO.read(firstImageFile);
 

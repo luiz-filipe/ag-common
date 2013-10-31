@@ -44,6 +44,9 @@ public class SingleRendererImageWriter extends AbstractImageWriter {
         if (image != null) {
             try {
                 File file = new File(imagePath);
+                file.mkdirs();
+                file.createNewFile();
+
                 logger.debug("Starting writing image in disk: '{}'", file.getAbsolutePath());
                 ImageIO.write(image.getImage(), "png", file);
                 logger.debug("Finished writing image in disk: '{}'", file.getAbsolutePath());
