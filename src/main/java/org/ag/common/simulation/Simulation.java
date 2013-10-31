@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
  *     }
  * </pre>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @NotThreadSafe
 public class Simulation {

@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  * the positions of the elements to render, but it retrieves the list of environment elements from the environment and
  * calculates the vertical and horizontal offset of the element in relation to the coordinate (0,0) of the environment.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @ThreadSafe
 public class EnvironmentElementsRenderer extends AbstractRenderer {

@@ -5,7 +5,7 @@ import net.jcip.annotations.ThreadSafe;
 /**
  * Provides basic implementation of <i>ImageWriter</i> interface.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @ThreadSafe
 public abstract class AbstractImageWriter implements ImageWriter {

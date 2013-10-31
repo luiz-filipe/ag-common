@@ -7,7 +7,7 @@ import net.jcip.annotations.Immutable;
  *
  * <p>This class is immutable.</p>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @Immutable
 public class Coordinate {

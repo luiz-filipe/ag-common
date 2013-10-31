@@ -15,7 +15,7 @@ import net.jcip.annotations.ThreadSafe;
  *
  * <p>This class is thread-safe.</p>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 @ThreadSafe

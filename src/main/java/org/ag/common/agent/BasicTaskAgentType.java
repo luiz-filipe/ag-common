@@ -14,7 +14,7 @@ import net.jcip.annotations.ThreadSafe;
  *
  * <p>This agent Type only has the WandererTask in its list.</p>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 @ThreadSafe

@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
  * A renderer manger is used by simulations to schedule and run the tasks that render images. It contains its own thread
  * pool and it manages both parts of the process, rendering and writing the images in disk.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @ThreadSafe
 public class RendererManager {

@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  *
  * <p>This annotation documents such methods, to make sure they are not used when they shouldn't be used.</p>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  * 
  */
 @Documented

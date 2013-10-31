@@ -10,7 +10,7 @@ package org.ag.common.agent;
  * Classes that implement this interface must be thread-safe and have a public
  * static final field called NAME.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 public interface AgentType {

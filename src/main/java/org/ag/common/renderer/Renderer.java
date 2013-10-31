@@ -8,7 +8,7 @@ import java.util.concurrent.Callable;
  * A renderer is a task that outputs an image that represents the state of the environment at the time the renderer was
  * run by the client.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public interface Renderer extends Callable<RenderedImage> {
     /**

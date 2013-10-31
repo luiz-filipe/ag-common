@@ -8,7 +8,7 @@ import org.ag.common.env.Node;
 /**
  * The public API for every agent defined in the simulation.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 public interface Agent extends Callable<Void> {

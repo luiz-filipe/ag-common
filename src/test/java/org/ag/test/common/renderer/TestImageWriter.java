@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Utility class used by unit tests to write a <i>BufferedImage</i> into disk.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public class TestImageWriter {
     private static final Logger logger = LoggerFactory.getLogger(TestImageWriter.class);

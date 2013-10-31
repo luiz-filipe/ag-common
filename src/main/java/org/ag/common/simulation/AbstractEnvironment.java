@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Implements the base functionality of the <i>Environment</i> interface.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public abstract class AbstractEnvironment implements Environment {
     private static final Logger logger = LoggerFactory.getLogger(AbstractEnvironment.class);

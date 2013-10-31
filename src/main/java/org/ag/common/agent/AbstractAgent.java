@@ -15,7 +15,7 @@ import net.jcip.annotations.ThreadSafe;
 /**
  * Base implementation of Agent interface.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 @ThreadSafe

@@ -10,7 +10,7 @@ import java.awt.Dimension;
  * renderer, and identification string that should be unique for each
  * environment.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 public class BasicEnvironmentElement implements EnvironmentElement {

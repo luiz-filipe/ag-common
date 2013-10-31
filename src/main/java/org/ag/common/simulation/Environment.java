@@ -11,7 +11,7 @@ import java.util.List;
  * The <i>Environment</i> interface declares the basic API for manipulating a collection of nodes as a whole, it doesn't
  * describe how the nodes should be stored themselves, but a two dimensional array seems to be the most obvious choice.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public interface Environment {
     /**

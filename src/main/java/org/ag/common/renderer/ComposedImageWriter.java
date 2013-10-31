@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Image writer that combines multiple images already rendered into one.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @ThreadSafe
 public class ComposedImageWriter extends AbstractImageWriter {

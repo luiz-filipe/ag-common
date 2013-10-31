@@ -10,7 +10,7 @@ import org.ag.common.task.Task;
  *
  * <p>Task agent type should be implemented as singleton in order to save memory consumption</p>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 public interface TaskAgentType extends AgentType {

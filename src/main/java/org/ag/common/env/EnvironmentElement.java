@@ -7,7 +7,7 @@ import java.awt.*;
  * that could represent obstacles in the element. Each element has a dimension, a colour that is used by the renderer,
  * and identification string that should be unique for each environment.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public interface EnvironmentElement {
     /**

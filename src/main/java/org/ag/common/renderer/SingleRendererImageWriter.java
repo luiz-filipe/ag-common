@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Image writer for images made by a single <i>RenderedImage</i> image.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @ThreadSafe
 public class SingleRendererImageWriter extends AbstractImageWriter {

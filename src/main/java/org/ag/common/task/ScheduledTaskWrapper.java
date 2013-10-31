@@ -9,7 +9,7 @@ import net.jcip.annotations.Immutable;
  * Simulations need to be able to schedule tasks for future execution. The ScheduledTaskWrapper is a simple class that
  * encapsulate the task and details on how the framework should execute it.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @Immutable
 public class ScheduledTaskWrapper<T> {

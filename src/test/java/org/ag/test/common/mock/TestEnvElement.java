@@ -10,7 +10,7 @@ import org.ag.common.env.EnvironmentFactory;
  * A simple concrete implementation for an environment element to be used in tests. It is composed by nodes of the
  * <i>BasicNode</i> node implementation.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public class TestEnvElement extends BasicEnvironmentElement {
 

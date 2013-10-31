@@ -7,7 +7,7 @@ import org.ag.common.simulation.Environment;
  * Base implementation of the <i>Renderer</i> interface. Provides the building blocks for creating more complex
  * renderer.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @ThreadSafe
 public abstract class AbstractRenderer implements Renderer {

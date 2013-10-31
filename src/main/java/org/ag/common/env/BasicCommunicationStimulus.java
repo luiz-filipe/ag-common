@@ -5,7 +5,7 @@ import net.jcip.annotations.Immutable;
 /**
  * Basic implementation of the <i>CommunicationStimulus</i> interface.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 @Immutable

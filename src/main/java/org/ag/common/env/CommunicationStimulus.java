@@ -8,7 +8,7 @@ package org.ag.common.env;
  * <p>For example, ants deposit pheromone on the environment to mark trails that lead to source of foods. The other
  * ants can read the pheromone and reinforce the trail if they are lead to a good source of food.</p>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public interface CommunicationStimulus {
     /**

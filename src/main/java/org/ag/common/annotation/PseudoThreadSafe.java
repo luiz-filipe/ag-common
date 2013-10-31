@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * <p>An example of class that uses this strategy is the <i>BasicNode</i> class.</p>
  *
  * @see org.ag.common.env.BasicNode
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @Documented
 @Target(value = ElementType.TYPE)

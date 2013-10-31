@@ -8,7 +8,7 @@ import org.ag.common.env.Node;
  * Concrete implementation of <i>AbstractAgent</i> interface to be used in unit testing. Agents of this type are not
  * capable of executing any task and a <i>RuntimeException</i> will be throw if they are submitted to execution.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public class TestAgent extends AbstractAgent {
     public TestAgent(String id, AgentType agentType, Node currentNode, boolean recordNodeHistory) {

@@ -9,7 +9,7 @@ import org.ag.common.env.EnvironmentFactory;
  * from the <i>BasicNode</i> class.
  *
  * @see org.ag.common.env.BasicNode
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 public class BasicEnvironment extends AbstractEnvironment {

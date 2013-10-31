@@ -6,7 +6,7 @@ import java.awt.Dimension;
  * The EnvironmentFactory class is an utility class that holds the methods to generate environments to be used for
  * simulations.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public class EnvironmentFactory {
     /**

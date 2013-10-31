@@ -3,7 +3,7 @@ package org.ag.common.env;
 /**
  * Communication stimulus types allow to differentiate between different kind of stimulus that are present in a node.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 public interface CommunicationStimulusType {

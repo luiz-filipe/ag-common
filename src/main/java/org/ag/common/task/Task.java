@@ -10,7 +10,7 @@ import org.ag.common.agent.Agent;
  * The execute(Agent) method executed by agents when they wish to achieve some goal and the task would help them with
  * that.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 public interface Task {

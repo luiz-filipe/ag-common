@@ -14,7 +14,7 @@ import org.ag.common.task.WandererTask;
  * Simple implementation of <i>TaskAgentType</i> to be used in tests. This type is capable of performing only one task,
  * the <i>WandererTask</i>.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @ThreadSafe
 public enum TestTaskAgentType implements TaskAgentType {

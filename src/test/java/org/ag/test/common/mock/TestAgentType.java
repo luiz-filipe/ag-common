@@ -5,7 +5,7 @@ import org.ag.common.agent.AgentType;
 /**
  * Agent type implemented to be used in unit testing.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 public enum TestAgentType implements AgentType {
     TYPE;

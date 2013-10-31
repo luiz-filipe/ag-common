@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * Documents which methods break thread-safety. Usually used in conjunction to the <i>PseudoThreadSafe</i> annotation.
  *
  * @see PseudoThreadSafe
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @Documented
 @Target(value = ElementType.METHOD)

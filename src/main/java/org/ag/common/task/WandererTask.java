@@ -10,7 +10,7 @@ import net.jcip.annotations.Immutable;
  * A simple implementation of a task. When executing this task the agent wanders the environment without worrying about
  * anything else. The task picks up a random direction and the agent moves to that neighbour node.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @Immutable
 public class WandererTask extends AbstractTask {

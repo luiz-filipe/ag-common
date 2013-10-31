@@ -26,7 +26,7 @@ import net.jcip.annotations.GuardedBy;
  * simulation starts. getNeighbour is extensively used throughout the simulation, so the overhead added by the
  * synchronisation would not pay off.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
 @PseudoThreadSafe
 public class BasicNode implements Node {

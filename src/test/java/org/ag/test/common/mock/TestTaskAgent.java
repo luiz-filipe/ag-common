@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Simple agent of type <i>TestTaskAgentType</i>. Agents of this class are used in tests that need agents in it.
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>*
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>*
  */
 public class TestTaskAgent extends TaskAgent {
     private static final Logger logger = LoggerFactory.getLogger(TestTaskAgent.class);

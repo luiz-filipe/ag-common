@@ -10,7 +10,7 @@ import net.jcip.annotations.Immutable;
  * <p>Tasks are identified by name. They should be unique strings. Another important point is that tasks should be
  * stateless, as the same object instance of a task will be shared by many agents.</p>
  *
- * @author Luiz Abrahao <luiz@luizabrahao.com>
+ * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  *
  */
 @Immutable
