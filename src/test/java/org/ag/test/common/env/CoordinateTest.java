@@ -6,8 +6,8 @@ import org.ag.common.env.Coordinate;
 import org.junit.Test;
 
 public class CoordinateTest {
-	@Test
-	public void testEqualsContract() {
-		EqualsVerifier.forClass(Coordinate.class).verify();
-	}
+    @Test
+    public void testEqualsContract() {
+        EqualsVerifier.forClass(Coordinate.class).verify();
+    }
 }

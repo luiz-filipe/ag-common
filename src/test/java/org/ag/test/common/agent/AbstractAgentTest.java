@@ -7,9 +7,8 @@ import org.junit.Test;
 
 public class AbstractAgentTest {
 
-	@Test
-	public void equalsContract() {
-		EqualsVerifier.forClass(AbstractAgent.class)
-			.verify();
-	}
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.forClass(AbstractAgent.class).verify();
+    }
 }

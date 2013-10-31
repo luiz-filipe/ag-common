@@ -8,10 +8,10 @@ import org.junit.Test;
 
 
 public class BasicCommunicationStimulusTest {
-	@Test
-	public void equalsContract() {
-		EqualsVerifier.forClass(BasicCommunicationStimulus.class)
-			.withRedefinedSubclass(TestCommunicationStimulus.class)
-			.verify();
-	}
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.forClass(BasicCommunicationStimulus.class)
+                .withRedefinedSubclass(TestCommunicationStimulus.class)
+                .verify();
+    }
 }
