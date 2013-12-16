@@ -7,6 +7,7 @@ import java.util.List;
 
 import net.jcip.annotations.GuardedBy;
 
+import net.jcip.annotations.ThreadSafe;
 import org.ag.common.agent.Agent;
 import org.ag.common.env.Coordinate;
 import org.ag.common.env.EnvironmentElement;
@@ -19,12 +20,12 @@ import org.slf4j.LoggerFactory;
  *
  * @author Luiz Filipe Abrahao <me@luizfilipe.com>
  */
+@ThreadSafe
 public abstract class AbstractEnvironment implements Environment {
     private static final Logger logger = LoggerFactory.getLogger(AbstractEnvironment.class);
 
     @GuardedBy("this")
     private final Node[][] env;
-    @GuardedBy("this")
     private final Dimension dimension;
     @GuardedBy("this")
     private final List<EnvironmentElement> environmentElements;
@@ -78,7 +79,7 @@ public abstract class AbstractEnvironment implements Environment {
     }
 
     @Override
-    public Node getNodeAt(final int line, final int column) {
+    public synchronized Node getNodeAt(final int line, final int column) {
         if ((line < 0) || (column < 0)) {
             logger.error("Cannot return node. line and column parameters"
                     + "must be greater or equal to 0.");
@@ -104,7 +105,7 @@ public abstract class AbstractEnvironment implements Environment {
     }
 
     @Override
-    public void addEnvironmentElement(final EnvironmentElement element,
+    public synchronized void addEnvironmentElement(final EnvironmentElement element,
                                       final int line, final int column) {
 
         this.environmentElements.add(element);
@@ -118,7 +119,7 @@ public abstract class AbstractEnvironment implements Environment {
     }
 
     @Override
-    public EnvironmentElement getEnvironmentElement(String id) {
+    public synchronized EnvironmentElement getEnvironmentElement(String id) {
         for (EnvironmentElement element : this.environmentElements) {
             if (element.getId().equals(id)) {
                 return element;
