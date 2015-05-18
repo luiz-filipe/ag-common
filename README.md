@@ -119,3 +119,5 @@ environment, marking a node that has been visited by any agent in black.
 The result:
 
 ![alt tag](http://luizfilipe.com/ag/two-minute-results.jpg)
+
+The images describe the nodes that the agent had visited at the point in time the enviroment snapshots were taken (5, 10, 20, 30 seconds in the simulation). As you can see the last image is effectivelly the union of the other ones.
