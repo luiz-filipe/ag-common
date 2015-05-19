@@ -198,6 +198,8 @@ nodes, move agents and create environments.
 
 See: [`Direction`](src/main/java/org/ag/common/env/Direction.java)
 
+![alt tag](http://luizfilipe.com/ag/overview-env.jpg)
+
 #### Agent
 
 ##### Agent Interface
@@ -219,3 +221,11 @@ and aggregate behaviour that will govern how the agents of these types will pres
 See: [`AgentType`](src/main/java/org/ag/common/agent/AgentType.java),
 [`TaskAgentType`](src/main/java/org/ag/common/agent/TaskAgentType.java),
 [`BasicTaskAgentType`](src/main/java/org/ag/common/agent/BasicTaskAgentType.java)
+
+![alt tag](http://luizfilipe.com/ag/overview-ag.jpg)
+
+#### Task
+
+##### Task Interface
+
+![alt tag](http://luizfilipe.com/ag/overview-task.jpg)
