@@ -132,9 +132,19 @@ We can divide the framework in two main areas, the model and the utility classes
 
 The three core components of the model are the packages:
  
-1. Environment 
-2. Agent
-3. Tasks
+ 1. [Environment](#)
+   - [Node](#)
+   - [Communication Stimulus](#)
+   - [Communication Stimulus Type](#)
+   - [Environment Element](#)
+   - [Other](#)
+     - [Coordinate](#)
+     - [Direction](#)
+ 2. [Agent](#)
+   - [Agent Interface](#)
+   - [Agent Type](#)
+ 3. [Task](#)
+   - [Task Interface](#)
 
 #### Environment
 
@@ -198,6 +208,8 @@ nodes, move agents and create environments.
 
 See: [`Direction`](src/main/java/org/ag/common/env/Direction.java)
 
+##### Package Overview
+
 ![alt tag](http://luizfilipe.com/ag/overview-env.jpg)
 
 #### Agent
@@ -222,10 +234,26 @@ See: [`AgentType`](src/main/java/org/ag/common/agent/AgentType.java),
 [`TaskAgentType`](src/main/java/org/ag/common/agent/TaskAgentType.java),
 [`BasicTaskAgentType`](src/main/java/org/ag/common/agent/BasicTaskAgentType.java)
 
+##### Package Overview
+
 ![alt tag](http://luizfilipe.com/ag/overview-ag.jpg)
 
 #### Task
 
 ##### Task Interface
+
+A task is a unit of specialised work. They are the means by which agents do something they
+need to do. Different type of agents can share the same task, but it is up to each of them
+how to use it. Tasks are a convenient way to process unit of work that are isolated one 
+from another and done by more than one type of agent.
+
+The [`Task`](src/main/java/org/ag/common/task/Task.java) interface formalise the basic API
+for defining tasks that will be associated to agent types.
+
+See: [`Task`](src/main/java/org/ag/common/task/Task.java),
+[`AbstractTask`](src/main/java/org/ag/common/task/AbstractTask.java),
+[`WandererTask`](src/main/java/org/ag/common/task/WandererTask.java)
+
+##### Package Overview
 
 ![alt tag](http://luizfilipe.com/ag/overview-task.jpg)
