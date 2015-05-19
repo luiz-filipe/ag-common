@@ -2,8 +2,8 @@
 
 A framework implemented in Java that allows you to loosely describe environments, agents 
 and tasks. This gives flexibility and allows different entities to be reused. It can 
-easily be used to describe BDI agents for example. This is framework is part of final 
-MSc Project that can be [downloaded here](http://luizfilipe.com/ag/msc-luiz-filipe.pdf).
+easily be used to describe BDI agents for example. This is framework is part of my final 
+MSc project that can be [downloaded here](http://luizfilipe.com/ag/msc-luiz-filipe.pdf).
 
 ## Two-minute introduction
 All you need to know to understand the following is:
@@ -197,3 +197,25 @@ declares these directions. They are used throughout the framework in order to se
 nodes, move agents and create environments.
 
 See: [`Direction`](src/main/java/org/ag/common/env/Direction.java)
+
+#### Agent
+
+##### Agent Interface
+
+The abstraction of any agent is the [`Agent`](src/main/java/org/ag/common/agent/Agent.java)
+interface. It formalises the basic Application Public Interface (API) that is available 
+to any agent in the model.
+
+See: [`Agent`](src/main/java/org/ag/common/agent/Agent.java),
+[`AbstractAgent`](src/main/java/org/ag/common/agent/AbstractAgent.java),
+[`TaskAgent`](src/main/java/org/ag/common/agent/TaskAgent.java)
+
+##### Agent Type
+
+Agents belong to a certain type, the [`AgentType`](src/main/java/org/ag/common/agent/AgentType.java)
+interface formalises that. Classes that implement this interface are associated to agents
+and aggregate behaviour that will govern how the agents of these types will present.
+
+See: [`AgentType`](src/main/java/org/ag/common/agent/AgentType.java),
+[`TaskAgentType`](src/main/java/org/ag/common/agent/TaskAgentType.java),
+[`BasicTaskAgentType`](src/main/java/org/ag/common/agent/BasicTaskAgentType.java)
