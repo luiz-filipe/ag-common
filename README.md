@@ -1,7 +1,9 @@
 # AG Common
 
-A framework implemented in Java that allows you to loosely describe environments, agents and tasks. This gives 
-flexibility and allows different entities to be reused. It can easily be used to describe BDI agents for example.
+A framework implemented in Java that allows you to loosely describe environments, agents 
+and tasks. This gives flexibility and allows different entities to be reused. It can 
+easily be used to describe BDI agents for example. This is framework is part of final 
+MSc Project that can be [downloaded here](http://luizfilipe.com/ag/msc-luiz-filipe.pdf).
 
 ## Two-minute introduction
 All you need to know to understand the following is:
@@ -23,12 +25,13 @@ public class WandererTask extends AbstractTask {
 
     /**
     * Randomly navigates from node to node in the environment.
-    * Note that this method would fall into a deadlock if the agent's current node is not connected 
-    * to any other node.
+    * Note that this method would fall into a deadlock if the agent's current node is not
+    * connected to any other node.
     */
     @Override
     public void execute(final Agent agent) {
-        final Node neighbourNode = agent.getCurrentNode().getNeighbour(Direction.getRandomDirection());
+        final Node neighbourNode = agent.getCurrentNode()
+                .getNeighbour(Direction.getRandomDirection());
 
         if (neighbourNode != null) {
             neighbourNode.addAgent(agent);
@@ -110,9 +113,9 @@ public class BasicSimulation {
         sim.run(30, TimeUnit.SECONDS);
     }
 ```
-In the last section we used the simulation to schedule 5 `ExploredEnvironmentRenderer` at 5, 10, 20
-and 30 seconds respectively. This kind of renderer in particular creates a snapshot of the
-environment, marking a node that has been visited by any agent in black.
+In the last section we used the simulation to schedule 5 `ExploredEnvironmentRenderer` at
+5, 10, 20 and 30 seconds respectively. This kind of renderer in particular creates a
+snapshot of the environment, marking a node that has been visited by any agent in black.
 
 ### Analysing the simulation output
 
@@ -120,4 +123,77 @@ The result:
 
 ![alt tag](http://luizfilipe.com/ag/two-minute-results.jpg)
 
-The images describe the nodes that the agent had visited at the point in time the enviroment snapshots were taken (5, 10, 20, 30 seconds in the simulation). As you can see the last image is effectivelly the union of the other ones.
+
+## Overview
+
+We can divide the framework in two main areas, the model and the utility classes.
+
+### Model 
+
+The three core components of the model are the packages:
+ 
+1. Environment 
+2. Agent
+3. Tasks
+
+#### Environment
+
+##### Node
+
+The fundamental entity to represent the environment is the 
+[`Node`](src/main/java/org/ag/common/env/Node.java) interface. A node can be seen as an
+infinitesimal piece of the environment. By linking nodes together it is possible to create
+complex network of objects that will describe the space where agents can navigate. 
+
+See: [`Node`](src/main/java/org/ag/common/env/Node.java), 
+[`BasicNode`](src/main/java/org/ag/common/env/BasicNode.java)
+
+##### Communication Stimulus
+
+Agents can shape the environment they belong to in various ways, communication stimuli 
+are one. They are deposited by the agents onto the environment. Other agents can read 
+these stimuli and use them to draw any conclusions and take decisions based on the state
+of the environment.
+
+The [`CommunicationStimulus`](src/main/java/org/ag/common/env/CommunicationStimulus.java) 
+interface is an abstraction of any communication inter-action.
+
+See: [`CommunicationStimulus`](src/main/java/org/ag/common/env/CommunicationStimulus.java), 
+[`BasicCommunicationStimulus`](src/main/java/org/ag/common/env/BasicCommunicationStimulus.java)
+
+
+##### Communication Stimulus Type
+
+We have many ways to communicate, we can talk to other people, we can write them an e-mail
+or use sign language to transmit any information we find useful to transmit.
+ 
+The [`CommunicationStimulusType`](src/main/java/org/ag/common/env/CommunicationStimulusType.java)
+interface is an high level abstraction of a specific way to communicate.
+
+See: [`CommunicationStimulusType`](src/main/java/org/ag/common/env/CommunicationStimulusType.java)
+
+##### Environment Element
+
+An environment element is an abstraction to anything that could be added to the 
+environment grid. For example, nodes that could represent obstacles in the element. 
+Each element has a dimension, a colour that is used by the renderer, and identification 
+string that should be unique for each environment.
+
+See: [`EnvironmentElement`](src/main/java/org/ag/common/env/EnvironmentElement.java), 
+[`BasicEnvironmentElement`](src/main/java/org/ag/common/env/BasicEnvironmentElement.java)
+
+##### Other
+
+###### Coordinate
+
+Representation of a coordinate in the environment.
+
+See: [`Coordinate`](src/main/java/org/ag/common/env/Coordinate.java)
+
+###### Direction
+
+Nodes are connected in a 8-way, that is, they can have 8 different neighbours. This class
+declares these directions. They are used throughout the framework in order to select
+nodes, move agents and create environments.
+
+See: [`Direction`](src/main/java/org/ag/common/env/Direction.java)
