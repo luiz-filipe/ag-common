@@ -1,9 +1,13 @@
 # AG Common
 
-A framework implemented in Java that allows you to loosely describe environments, agents 
-and tasks. This gives flexibility and allows different entities to be reused. It can 
-easily be used to describe BDI agents for example. This is framework is part of my final 
-MSc project that can be [downloaded here](http://luizfilipe.com/ag/msc-luiz-filipe.pdf).
+A framework implemented in Java that allows you to loosely describe environments, agents
+and tasks. This gives flexibility and allows different entities to be reused. It can
+easily be used to describe BDI agents for example. This is framework is part of my final
+MSc project that can be [downloaded here](https://github.com/luiz-filipe/msc-project/raw/master/report/MSc-Report.pdf).
+
+## See also
+[AG Ants](https://github.com/luiz-filipe/ag-ants), a specialisation of that
+describes a colony of ants and its main components
 
 ## Two-minute introduction
 All you need to know to understand the following is:
@@ -120,18 +124,16 @@ snapshot of the environment, marking a node that has been visited by any agent i
 ### Analysing the simulation output
 
 The result:
-
-![alt tag](http://luizfilipe.com/ag/two-minute-results.jpg)
-
+<img src="http://luiz-filipe.github.io/ag-common/img/nodes-visited.png" alt="Nodes visited" width="350" height="350">
 
 ## Overview
 
 We can divide the framework in two main areas, the model and the utility classes.
 
-### Model 
+### Model
 
 The three core components of the model are the packages:
- 
+
  1. [Environment](#)
    - [Node](#)
    - [Communication Stimulus](#)
@@ -150,25 +152,25 @@ The three core components of the model are the packages:
 
 ##### Node
 
-The fundamental entity to represent the environment is the 
+The fundamental entity to represent the environment is the
 [`Node`](src/main/java/org/ag/common/env/Node.java) interface. A node can be seen as an
 infinitesimal piece of the environment. By linking nodes together it is possible to create
-complex network of objects that will describe the space where agents can navigate. 
+complex network of objects that will describe the space where agents can navigate.
 
-See: [`Node`](src/main/java/org/ag/common/env/Node.java), 
+See: [`Node`](src/main/java/org/ag/common/env/Node.java),
 [`BasicNode`](src/main/java/org/ag/common/env/BasicNode.java)
 
 ##### Communication Stimulus
 
-Agents can shape the environment they belong to in various ways, communication stimuli 
-are one. They are deposited by the agents onto the environment. Other agents can read 
+Agents can shape the environment they belong to in various ways, communication stimuli
+are one. They are deposited by the agents onto the environment. Other agents can read
 these stimuli and use them to draw any conclusions and take decisions based on the state
 of the environment.
 
-The [`CommunicationStimulus`](src/main/java/org/ag/common/env/CommunicationStimulus.java) 
+The [`CommunicationStimulus`](src/main/java/org/ag/common/env/CommunicationStimulus.java)
 interface is an abstraction of any communication inter-action.
 
-See: [`CommunicationStimulus`](src/main/java/org/ag/common/env/CommunicationStimulus.java), 
+See: [`CommunicationStimulus`](src/main/java/org/ag/common/env/CommunicationStimulus.java),
 [`BasicCommunicationStimulus`](src/main/java/org/ag/common/env/BasicCommunicationStimulus.java)
 
 
@@ -176,7 +178,7 @@ See: [`CommunicationStimulus`](src/main/java/org/ag/common/env/CommunicationStim
 
 We have many ways to communicate, we can talk to other people, we can write them an e-mail
 or use sign language to transmit any information we find useful to transmit.
- 
+
 The [`CommunicationStimulusType`](src/main/java/org/ag/common/env/CommunicationStimulusType.java)
 interface is an high level abstraction of a specific way to communicate.
 
@@ -184,12 +186,12 @@ See: [`CommunicationStimulusType`](src/main/java/org/ag/common/env/Communication
 
 ##### Environment Element
 
-An environment element is an abstraction to anything that could be added to the 
-environment grid. For example, nodes that could represent obstacles in the element. 
-Each element has a dimension, a colour that is used by the renderer, and identification 
+An environment element is an abstraction to anything that could be added to the
+environment grid. For example, nodes that could represent obstacles in the element.
+Each element has a dimension, a colour that is used by the renderer, and identification
 string that should be unique for each environment.
 
-See: [`EnvironmentElement`](src/main/java/org/ag/common/env/EnvironmentElement.java), 
+See: [`EnvironmentElement`](src/main/java/org/ag/common/env/EnvironmentElement.java),
 [`BasicEnvironmentElement`](src/main/java/org/ag/common/env/BasicEnvironmentElement.java)
 
 ##### Other
@@ -210,14 +212,14 @@ See: [`Direction`](src/main/java/org/ag/common/env/Direction.java)
 
 ##### Package Overview
 
-![alt tag](http://luizfilipe.com/ag/overview-env.jpg)
+<img src="http://luiz-filipe.github.io/ag-common/img/class-environment.png" alt="Nodes visited" width="350" height="350">
 
 #### Agent
 
 ##### Agent Interface
 
 The abstraction of any agent is the [`Agent`](src/main/java/org/ag/common/agent/Agent.java)
-interface. It formalises the basic Application Public Interface (API) that is available 
+interface. It formalises the basic Application Public Interface (API) that is available
 to any agent in the model.
 
 See: [`Agent`](src/main/java/org/ag/common/agent/Agent.java),
@@ -236,7 +238,7 @@ See: [`AgentType`](src/main/java/org/ag/common/agent/AgentType.java),
 
 ##### Package Overview
 
-![alt tag](http://luizfilipe.com/ag/overview-ag.jpg)
+<img src="http://luiz-filipe.github.io/ag-common/img/class-agent.png" alt="Nodes visited" width="300" height="212">
 
 #### Task
 
@@ -244,7 +246,7 @@ See: [`AgentType`](src/main/java/org/ag/common/agent/AgentType.java),
 
 A task is a unit of specialised work. They are the means by which agents do something they
 need to do. Different type of agents can share the same task, but it is up to each of them
-how to use it. Tasks are a convenient way to process unit of work that are isolated one 
+how to use it. Tasks are a convenient way to process unit of work that are isolated one
 from another and done by more than one type of agent.
 
 The [`Task`](src/main/java/org/ag/common/task/Task.java) interface formalise the basic API
@@ -256,4 +258,4 @@ See: [`Task`](src/main/java/org/ag/common/task/Task.java),
 
 ##### Package Overview
 
-![alt tag](http://luizfilipe.com/ag/overview-task.jpg)
+<img src="http://luiz-filipe.github.io/ag-common/img/class-task.png" alt="Nodes visited" width="200" height="312">
